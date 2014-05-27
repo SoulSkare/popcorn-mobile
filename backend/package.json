@@ -1,0 +1,29 @@
+{
+  "name": "Popcorn-Time-Mobile",
+  "homepage": "http://get-popcorn.com",
+  "bugs": "https://github.com/popcorn-official/popcorn-mobile/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/popcorn-official/popcorn-mobile.git"
+  },
+  "license": "GPL-3.0",
+  "main": "app://host/src/app/index.html",
+  "version": "0.3.1",
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install",
+    "postupdate": "node_modules/.bin/bower update",
+    "start": "node src/app/server/app.js"
+  },
+  "dependencies": {
+    "URIjs": "1.13.x",
+    "async": "0.9.0",
+    "backbone": "^1.1.2",
+    "body-parser": "^1.2.0",
+    "express": "^4.3.1",
+    "peerflix": "^0.10.1",
+    "read-torrent": "^1.0.0",
+    "request": "^2.36.0",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {}
+}
