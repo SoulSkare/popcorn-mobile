@@ -1,0 +1,11 @@
+backend/node_modules/
+backend/npm-debug.log
+*.DS_Store
+
+# vim swap files
+*.swp
+
+*.sublime-*
+*.bat
+*.db
+*.json
