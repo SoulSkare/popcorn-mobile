@@ -76,7 +76,7 @@
         };
 
         engine.server.on('listening', function(){
-            streamInfo.set('src', 'http://192.168.0.102:' + engine.server.address().port + '/');
+            streamInfo.set('src', 'http://localhost:' + engine.server.address().port + '/');
             streamInfo.set('type', 'video/mp4');
 
             // TEST for custom NW

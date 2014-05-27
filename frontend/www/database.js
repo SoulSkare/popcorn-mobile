@@ -7,7 +7,7 @@ if(typeof Nedb == "undefined") Nedb = require('nedb');
 
     console.time("App startup time");
     var data_path = "/src/server/tmp";
-    var API_ENDPOINT = "http://192.168.0.102:8080/api/json?target=http://popcorn-api.com";
+    var API_ENDPOINT = "http://localhost:8080/api/json?target=http://popcorn-api.com";
 
 // TTL for popcorn-api DB sync
 var TTL = 1000 * 60 * 60 * 24;

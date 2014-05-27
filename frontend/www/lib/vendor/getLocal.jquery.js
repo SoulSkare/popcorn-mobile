@@ -1,4 +1,4 @@
-LOCAL_API_BASE = "http://192.168.0.102:8080/api/json";
+LOCAL_API_BASE = "http://localhost:8080/api/json";
 
 $.getLocal = function() {
     var url = URI(LOCAL_API_BASE);

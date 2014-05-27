@@ -8,7 +8,7 @@
 
     if (streaming) {
 
-      $.get('http://192.168.0.102:8080/api/streamer', function (data, status, jqXHR) {
+      $.get('http://localhost:8080/api/streamer', function (data, status, jqXHR) {
         console.log(data);
         var state = data.state;
         var streamInfo = new App.Model.StreamInfo(data.streamInfo);
@@ -34,7 +34,7 @@
 
     console.log(torrent);
     var options = {
-      url: 'http://192.168.0.102:8080/api/streamer',
+      url: 'http://localhost:8080/api/streamer',
       method: 'post',
       data: {
         torrent: torrent
@@ -88,7 +88,7 @@
 
     stop: function () {
       $.ajax({
-        url: 'http://192.168.0.102:8080/api/streamer',
+        url: 'http://localhost:8080/api/streamer',
         method: 'DELETE',
         success: function () {
           streaming = false;
