@@ -1,7 +1,7 @@
 #Popcorn Time Mobile Backed
 
 ### Idea
-Load Popcorn Time in a Web View.
+Run peerflix in backround (API) than we can talk with Cordova
 
 ***
 
