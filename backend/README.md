@@ -1,7 +1,7 @@
 #Popcorn Time Mobile Backed
 
 ### Idea
-Run peerflix in backround (API) than we can talk with Cordova
+Run peerflix in backround (API) than we can talk with Cordova in the same APK (Cordova for Frontend and Nodejs for Backend)
 
 ***
 
