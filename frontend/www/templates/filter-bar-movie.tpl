@@ -1,4 +1,4 @@
-		<ul class="nav nav-hor left">
+<!--		<ul class="nav nav-hor left">
 			<li class="source active showMovies"><%= i18n.__("Movies") %></li>
 			<li class="source showShows"><%= i18n.__("TV Series") %></li>
 		</ul>
@@ -25,7 +25,7 @@
 					<% }); %>
 				</ul>
 			</li>
-		</ul>
+		</ul>-->
 		<ul class="nav nav-hor right">
 			<li>
 				<div class="right search">

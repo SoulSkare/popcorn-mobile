@@ -1,4 +1,4 @@
-<header id="header"></header>
+<!--<header id="header"></header>-->
 <div id="notification"></div>
 <div id="changelog-container"></div>
 <div id="disclaimer-container"></div>
