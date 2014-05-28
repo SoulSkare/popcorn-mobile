@@ -35,4 +35,5 @@
 			<li><button class="favorites"></button></li>
 			<li><button class="about"></button></li>
 			<li><button class="settings"></button></li>
+			<li><img src="../images/MENU ICON.png" class="show_menu"></li>
 		</ul>

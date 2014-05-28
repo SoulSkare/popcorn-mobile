@@ -20,7 +20,8 @@
             'click .showMovies': 'showMovies',
             'click .showShows': 'showShows',
             'click .favorites': 'showFavorites',
-            'click .triggerUpdate': 'updateDB'
+            'click .triggerUpdate': 'updateDB',
+            'click .show_menu': 'showMenu'
         },
 
         focus: function (e) {
@@ -70,6 +71,15 @@
             this.previousSort = sorter;
         },
 
+        showMenu:
+                $('nav#menu').mmenu({
+                    position: 'right',
+                    zposition: "front"
+                });
+                $("#my-menu").trigger("open");
+                $("#my-menu").trigger("close");
+            });
+        },
         changeGenre: function(e) {
             App.vent.trigger('about:close');
             this.$('.genres .active').removeClass('active');
