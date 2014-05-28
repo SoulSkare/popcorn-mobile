@@ -70,7 +70,7 @@ module.exports = function(grunt) {
 				},
 			},
 			scripts: {
-				files: ['./www/styl/*.styl','./www/styl/**/*.styl','./www/**/*.js','./www/*.js'],
+				files: ['./www/styl/*.styl','./www/styl/**/*.styl','./www/**/*.js','./www/*.js','./www/templates/*.tpl','./www/index.html'],
 				tasks: ['css']
 			},
 		},
