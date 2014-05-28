@@ -1,6 +1,6 @@
-.main-container
-{
-    background-color: #17181b; /* color overlay */
+.main-container {
+    background-color: #17181b;
+    /* color overlay */
     width: 720px;
     height: 1280px;
     position: absolute;
