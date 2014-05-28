@@ -2,3 +2,4 @@ backend/node_modules/
 frontend/node_modules/
 frontend/www/vendor/
 npm-debug.log
+frontend/www/css/app.css
