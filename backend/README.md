@@ -16,10 +16,15 @@ After that, you can run with `node src/app/app.js` and visit `http://localhost:8
 ### Init streaming
 ```
 url: 'http://localhost:8080/api/streamer',
-method: 'PUT',
+method: 'POST',
 data: {
     torrent: torrent-url
 }
+```
+```
+url: 'http://localhost:8080/api/streamer',
+method: 'PUT',
+data: BASE64_ENCODED_TORRENT_FILE
 ```
 
 ### Get status
