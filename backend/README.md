@@ -8,9 +8,8 @@ Run peerflix in backround (API) than we can talk with Cordova in the same APK (C
 ### Initial setup:
 
  1. `npm install`
- 2. `grunt css`
 
-After that, you can run with `npm start` and visit `http://localhost:8080` in your browser.
+After that, you can run with `node src/app/app.js` and visit `http://localhost:8080` in your browser.
 
 ***
 
