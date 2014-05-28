@@ -8,8 +8,7 @@ Connect to backend and get stream information
 ### Development mode:
 
  1. `npm install`
- 2. `grunt css`
- 3. `grunt serve`
+ 2. `grunt serve`
 
 After that, you can visit `http://localhost:8000` in your browser.
 

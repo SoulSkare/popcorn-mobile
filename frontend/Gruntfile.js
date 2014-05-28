@@ -5,7 +5,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
 		'stylus',
-		'jshint'
+		'connect',
+		'watch'
 	]);
 
 	grunt.registerTask('css', [
@@ -13,6 +14,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('serve', [
+		'stylus',
 		'connect',
 		'watch'
 	]);
