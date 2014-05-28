@@ -8,7 +8,8 @@
             search:     '.search input',
 
             sorterValue: '.sorters .value',
-            genreValue:  '.genres  .value'
+            genreValue:  '.genres  .value',
+            menuBar:  'ul.nav'
         },
         events: {
             'hover  @ui.search': 'focus',
@@ -20,8 +21,7 @@
             'click .showMovies': 'showMovies',
             'click .showShows': 'showShows',
             'click .favorites': 'showFavorites',
-            'click .triggerUpdate': 'updateDB',
-            'click .show_menu': 'showMenu'
+            'click .triggerUpdate': 'updateDB'
         },
 
         focus: function (e) {
@@ -32,6 +32,12 @@
         onShow: function() {
             this.$('.sorters .dropdown-menu a:nth(0)').addClass('active');
             this.$('.genres  .dropdown-menu a:nth(0)').addClass('active');
+
+            this.ui.menuBar.mmenu({
+                position: 'right',
+                zposition: "front"
+            });
+
         },
         
         focusSearch: function () {
@@ -71,15 +77,10 @@
             this.previousSort = sorter;
         },
 
-        showMenu:
-                $('nav#menu').mmenu({
-                    position: 'right',
-                    zposition: "front"
-                });
-                $("#my-menu").trigger("open");
-                $("#my-menu").trigger("close");
-            });
+        showMenu: function(e) {
+
         },
+
         changeGenre: function(e) {
             App.vent.trigger('about:close');
             this.$('.genres .active').removeClass('active');
