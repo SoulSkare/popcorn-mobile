@@ -21,7 +21,7 @@ float: none;
 .popcorn-movie-detail-meta
 {
 margin-left: 20px;
-margin-top: 10px;
+margin-top: 18px;
 color: #5b5b5b; /* text color */
 font-family: 'Roboto', sans-serif;
 font-size: 24px;
@@ -32,7 +32,7 @@ float: left;
 
 .popcorn-movie-detail-star-container
 {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 40px;
     height: 27px;
     width: auto;
