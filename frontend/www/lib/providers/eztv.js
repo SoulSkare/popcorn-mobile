@@ -36,7 +36,7 @@
         var url = AdvSettings.get('tvshowApiEndpoint') + 'shows/'+filters.page+'?' + querystring.stringify(params).replace(/%25%20/g,'%20');
         win.info('Request to EZTV API');
         win.debug(url);
-        $.getLocal(url, function(data, status, jqXHR) {
+        $.get(url, function(data, status, jqXHR) {
             if(status!="success") {
                 deferred.reject(data);
             } else if(!data || (data.error && data.error !== "No movies found")) {
@@ -57,7 +57,7 @@
         
         win.info('Request to EZTV API');
         win.debug(url);
-        $.getLocal(url, function(data, status, jqXHR) {
+        $.get(url, function(data, status, jqXHR) {
             if(status!="success") {
 
                 callback(data, false);

@@ -28,9 +28,9 @@
 
         var deferred = Q.defer();
 
-      $.getLocal(url, function(data, status, jqXHR){
+      $.get(url, function(data, status, jqXHR){
             if(status != "success" || !data || !data.success) {
-              $.getLocal(mirrorurl, function(data, status, jqXHR){
+              $.get(mirrorurl, function(data, status, jqXHR){
                 if(status != "success" || !data || !data.success) {
                         deferred.reject(error);
                     } else {

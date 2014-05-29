@@ -1,11 +1,9 @@
 "use strict";
 
 var
-  os = require('os'),
   _ = require('underscore'),
   StreamInfo = require('./stream_info').StreamInfo
 ;
-
 
 var App = {};
 
@@ -97,28 +95,12 @@ function handleTorrent(torrent) {
 
   streamInfo = new StreamInfo({engine: engine});
   statsUpdater = setInterval(_.bind(streamInfo.updateStats, streamInfo, engine), 1000);
-  //stateModel.set('streamInfo', streamInfo);
-  //watchState(stateModel);
 
-//    var checkReady = function() {
-//        if(stateModel.get('state') === 'ready') {
-//
-//            // we need subtitle in the player
-//            console.log(torrent);
-//            streamInfo.set('subtitle', torrent.subtitles);
-//            streamInfo.set('title', torrent.title);
-//
-//            App.vent.trigger('stream:ready', streamInfo);
-//            stateModel.destroy();
-//        }
-//    };
 
   engine.server.on('listening', function () {
     console.log('listening');
     streamInfo.set('src', 'http://localhost:' + engine.server.address().port + '/');
     streamInfo.set('type', 'video/mp4');
-//        stateModel.on('change:state', checkReady);
-//        checkReady();
   });
 
   engine.on('ready', function () {

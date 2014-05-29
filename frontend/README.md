@@ -14,8 +14,8 @@ After that, you can visit `http://localhost:8000` in your browser.
 
 Make sure the backend is running on localhost:8080
 
-[Emulator](http://emulate.phonegap.com/?url=localhost:8000&platform=cordova-2.0.0)
+[You need to use the Emulator](http://emulate.phonegap.com/?url=localhost:8000&platform=cordova-2.0.0)
 
-### You NEED to disable the Cross Domain Proxy if you use the emulator.
+### ATTENTION: ENABLE the Cross Domain Proxy if you use the emulator.
 
-![Disable Cross Domain Proxy](http://i.imgur.com/5Ekzq5t.jpg)
+![ENABLE Cross Domain Proxy](http://i.imgur.com/2AgnoeC.png)

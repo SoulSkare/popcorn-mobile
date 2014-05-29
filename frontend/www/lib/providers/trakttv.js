@@ -31,7 +31,7 @@
                 'full'
             ]);
 
-        $.getLocal(uri.toString(), function(data, status, jqXHR) {
+        $.get(uri.toString(), function(data, status, jqXHR) {
             if(status != "success" || !data) {
                 deferred.reject(error);
             } else {

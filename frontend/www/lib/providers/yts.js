@@ -49,7 +49,7 @@
 		
         win.info('Request to YTS API');
         win.debug(url);
-        $.getLocal(url, function(data, status, jqXHR) {
+        $.get(url, function(data, status, jqXHR) {
             if(status != "success") {
                 deferred.reject(error);
             } else if(!data || (data.error && data.error !== 'No movies found')) {
