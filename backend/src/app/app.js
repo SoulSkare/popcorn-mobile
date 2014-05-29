@@ -1,17 +1,21 @@
 var express = require('express'),
     app = express(),
     streamer = require('./streamer'),
-    path = require('path'),
     bodyParser = require('body-parser');
 
 //app.use(morgan({ format: 'dev', immediate: true }));
 app.use(bodyParser());
-app.use('/', express.static(path.join(__dirname, './static')));
+
 app.use(function (req, res, next) {
     console.log(req.method, req.path);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'text/json');
     return next();
+});
+
+// used by frontend to make sure backend is ready
+app.use('/api/status', function (req, res) {
+    res.json(200, {status: 'ready'});
 });
 
 //Start engine

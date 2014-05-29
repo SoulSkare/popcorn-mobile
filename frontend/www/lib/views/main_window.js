@@ -73,14 +73,15 @@
 
             // Show loading modal on startup
             var that = this;
-            //this.Content.show(new App.View.InitModal());
-            //that.InitModal.close();
-            
-            that.showMovies();
-            // Focus the window when the app opens
-            that.nativeWindow.focus();
+            this.Content.show(new App.View.InitModal());
 
-            App.vent.trigger('main:ready');
+            // Make sure our backend is ready           
+            Backend.initialize(function() {
+                that.showMovies();
+                that.nativeWindow.focus();
+                App.vent.trigger('main:ready'); 
+            });
+
         },
 
         showMovies: function(e) {
