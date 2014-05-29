@@ -1,5 +1,5 @@
             <div class="popcorn-logo"></div>
-            <div class="popcorn-menu-icon"></div>
+            <a class="popcorn-menu-icon" href="#nav-menu"></a>
             <div class="popcorn-search-icon"></div>
 
 <!--		<ul class="nav nav-hor left">
@@ -30,7 +30,7 @@
 				</ul>
 			</li>
 		</ul>-->
-		<ul class="nav nav-hor right">
+		<ul class="nav nav-hor right" id="nav-menu">
 			<li>
 				<div class="right search">
 					<form><input type="text" placeholder="<%= i18n.__("Search") %>"></form>

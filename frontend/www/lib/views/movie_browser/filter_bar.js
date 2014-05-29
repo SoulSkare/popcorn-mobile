@@ -9,7 +9,7 @@
 
             sorterValue: '.sorters .value',
             genreValue:  '.genres  .value',
-            menuBar:  'ul.nav'
+            menuBar:  '#nav-menu'
         },
         events: {
             'hover  @ui.search': 'focus',
@@ -21,7 +21,8 @@
             'click .showMovies': 'showMovies',
             'click .showShows': 'showShows',
             'click .favorites': 'showFavorites',
-            'click .triggerUpdate': 'updateDB'
+            'click .triggerUpdate': 'updateDB',
+            'click .popcorn-menu-icon': 'showMenu'
         },
 
         focus: function (e) {
@@ -35,7 +36,8 @@
 
             this.ui.menuBar.mmenu({
                 position: 'right',
-                zposition: "front"
+                zposition: "front",
+                dragOpen: true
             });
 
         },
@@ -75,10 +77,6 @@
                 sorter: sorter
             });
             this.previousSort = sorter;
-        },
-
-        showMenu: function(e) {
-
         },
 
         changeGenre: function(e) {
