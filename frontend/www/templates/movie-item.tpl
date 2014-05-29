@@ -5,7 +5,7 @@
 			<div class="actions-favorites"></div>
 		</div>
 	</div>
-	<div class="title_item">
+
 		<p class="title" title="<%= title %>"><%= title %></p>
 		<p class="year"><%= year %></p>
 		<% if(Settings.moviesShowQuality){ %>
@@ -13,5 +13,5 @@
 			if (q720 && q1080) { %>720p/1080p<% }else if (q1080) { %>1080p<% } else { %>720p<% } %>
 			</p>
 		<% } %>
-	</div>
+
 </div>
