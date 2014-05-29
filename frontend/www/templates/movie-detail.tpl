@@ -7,8 +7,8 @@
  	%>
 		<div id="movie-backdrop" data-bgr="<%= backdrop %>" class="movie-backdrop"></div>
 		<div class="movie-backdrop-overlay"></div>
-		<div class="cover-detail-overlay"><div class="cover-detail-favorites"></div></div>
-		<img class="movie-cover-image" src="<%= image %>" />
+		<!--<div class="cover-detail-overlay"><div class="cover-detail-favorites"></div></div>
+		<img class="movie-cover-image" src="<%= image %>" /> -->
 		<div class="sperator-movie"></div>
 		<div class="movie-meta-title"><%= title %></div>
 		<div class="movie-quick-info">
