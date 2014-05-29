@@ -79,12 +79,7 @@
                         ytcontrols: false,
                         quality: '720p',
                         plugins: {
-                            chromecast: {
-                                enabled: true,
-                                appId: "E4815CDE",
-                                namespace: 'popcorn-cast',
-                                title: this.model.get('title')
-                            }
+                            
                         }
                     }
                 );
@@ -98,13 +93,8 @@
                         smallerSubtitle : {},
                         customSubtitles: {},
                         progressTips: {},
-                        dropSubtitles: {},
-                        chromecast: {
-                            enabled: true,
-                            appId: "E4815CDE",
-                            namespace: 'popcorn-cast',
-                            title: this.model.get('title')
-                        }
+                        dropSubtitles: {}
+                        
                     }
                 });
             }
