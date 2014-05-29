@@ -15,7 +15,7 @@
 
         events: {
             'click .actions-favorites': 'toggleFavorite',
-            'click .cover': 'showDetail'
+            'click .popcorn-movie-open-icon': 'showDetail'
         },
 
         onShow: function() {
@@ -35,7 +35,7 @@
                 }
                     
             });            
-            this.ui.coverImage.on('load', _.bind(this.showCover, this));
+            //this.ui.coverImage.on('load', _.bind(this.showCover, this));
         },
 
         onClose: function() {
