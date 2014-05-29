@@ -1,3 +1,7 @@
+            <div class="popcorn-logo"></div>
+            <div class="popcorn-menu-icon"></div>
+            <div class="popcorn-search-icon"></div>
+
 <!--		<ul class="nav nav-hor left">
 			<li class="source active showMovies"><%= i18n.__("Movies") %></li>
 			<li class="source showShows"><%= i18n.__("TV Series") %></li>
