@@ -1,4 +1,4 @@
-<div id ="tt<%= imdb %>">
+
 		<p class="title" title="<%= title %>"><%= title %></p>
 		<p class="year"><%= year %></p>
 		<% if(Settings.moviesShowQuality){ %>
@@ -7,4 +7,6 @@
 			</p>
 		<% } %>
 
-</div>
+		            <div class="popcorn-movie-open-icon"></div>
+            <div class="popcorn-movie-seperator"></div>
+
