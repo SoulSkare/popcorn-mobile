@@ -5,6 +5,9 @@ var Backend = {
         document.getElementById("init-status").innerHTML = "Status: Connecting to backend";
         document.getElementById("initbar-contents").style.width="20%";
 
+        // DEV MODE (SKIP CHECK)
+        callback();
+        
         $.get('http://localhost:8080/api/status', function (data, status, jqXHR) {
 
             if (data.status === 'ready') {
