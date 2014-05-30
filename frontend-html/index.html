@@ -44,28 +44,37 @@
 
     <div class="menu-overlay"></div>
     <div class="menu">
-        <ul>
+        <ul class="menu-base">
             <li class="selected">Movies</li>
             <li>Tv Series</li>
             <li>Genre</li>
-                <ul class="menu-genre">
-                    <li>Action</li>
-                    <li>Action</li>
-                    <li>Action</li>
-                    <li>Action</li>
-                    <li>Action</li>
-                </ul>
             <li>Sort By</li>
             <li>Bookmarks</li>
             <li>Setting</li>
             <li>Info</li>
         </ul>
+        <div class="sub-menu">
+            <div> < back</div>
+            <ul class="menu-genre">
+                <li class="selected">Action</li>
+                <li>Action</li>
+                <li>Action</li>
+                <li>Action</li>
+                <li>Action</li>
+            </ul>
+        </div>
     </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        $(".popcorn-menu-icon").on("click tap", function(e){
+            $(".menu").css("right", 0);
+            $(".menu-overlay").css('display', 'block');
+        })
+        $(".menu-overlay").on("click tap", function(e){
+            $(".menu").css("right", "-270px");
+            $(".menu-overlay").css('display', 'none');
+        })
+    </script>
 
 </body>
-
-
-
-
-
 </html>
