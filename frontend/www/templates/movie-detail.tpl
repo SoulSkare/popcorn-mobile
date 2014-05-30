@@ -63,14 +63,14 @@
 				<% } %>
 			</div>
 
-			<div class="sub-dropdown"><%= i18n.__("Subtitles") %><div id="toggle-sub-dropdown" class="flag toggle NA selected-lang"></div>
+			<!--<div class="sub-dropdown"><%= i18n.__("Subtitles") %><div id="toggle-sub-dropdown" class="flag toggle NA selected-lang"></div>
 			<div id="toggle-sub-dropdown-arrow" class="sub-dropdown-arrow-down"></div> <div class="sub-dropdown-arrow-up"></div> </div>
 
 			<div class="flag-container">
 				<% for(var lang in subtitle){ %>
 					<div class="sub-flag-icon flag <%= lang %>" data-lang="<%= lang %>" title="<%= App.Localization.langcodes[lang].nativeName %>"></div>
 				<% } %>
-			</div>
+			</div>-->
 		</div>
 	</div>
 </div>
