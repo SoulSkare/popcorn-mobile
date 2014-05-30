@@ -65,13 +65,13 @@
     },
     "installed_plugins": {
         "org.common.plugins.updateapp": {
-            "PACKAGE_NAME": "com.popcorntime.mobile"
+            "PACKAGE_NAME": "io.popcorntime.frontend"
         },
         "org.apache.cordova.network-information": {
-            "PACKAGE_NAME": "com.popcorntime.mobile"
+            "PACKAGE_NAME": "io.popcorntime.frontend"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.popcorntime.mobile"
+            "PACKAGE_NAME": "io.popcorntime.frontend"
         }
     },
     "dependent_plugins": {}
