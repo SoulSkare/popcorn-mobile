@@ -1,274 +1,171 @@
-    function testInstalled() {
-      console.log("No auto updating in browser version");
-      return false;
-        return (!_.contains(require('fs').readdirSync('.'), '.git') || // Test Development
-                (   // Test Windows
-                    App.settings.os === 'windows' &&
-                    fs.existsSync(process.cwd()+'\\Uninstall.exe')
-                ) ||
-                (   // Test Linux
-                    App.settings.os === 'linux' &&
-                    _.contains(require('fs').readdirSync('.'), 'package.nw')
-                ) ||
-                (   // Test Mac OS X
-                    App.settings.os === 'mac' &&
-                    process.cwd().indexOf('Resources/app.nw') !== -1
-                ));
-    }
+var initOptions = {
+    updateSite : 'http://get-popcorn.com/mobile',
+};
 
-    function checkUpdate() {
-        win.debug('Testing if we should check for update...', testInstalled());
-        if(testInstalled()) {
-            var request = require('request'),
-              fs = require('fs'),
-              rm = require('rimraf'),
-              path = require('path'),
-              crypto = require('crypto'),
-              zip = require('adm-zip');
 
-            var updateUrl = Settings.updateApiEndpoint + 'update.json';
+function checkConnection() {
+    var networkState = navigator.connection.type;
 
-            var CWD = process.cwd();
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
 
-            /* HARDCODED DSA PUBLIC KEY... DO NOT MODIFY, CHANGE, OR OTHERWISE MESS WITH THIS
-             * IF I SEE A PULL REQUEST CHANGING THIS LINE, I WILL, REPEAT.. I WILL COME AFTER YOU
-             * AND KILL YOU! You have been warned -jduncanator
-             * On a side note, this is here as its easier for an attacker to modify localStorage 
-             * than source code!                                                                */
-            var VERIFY_PUBKEY =
-                '-----BEGIN PUBLIC KEY-----\n' +
-                'MIIBtjCCASsGByqGSM44BAEwggEeAoGBAPNM5SX+yR8MJNrX9uCQIiy0t3IsyNHs\n' +
-                'HWA180wDDd3S+DzQgIzDXBqlYVmcovclX+1wafshVDw3xFTJGuKuva7JS3yKnjds\n' +
-                'NXbvM9CrJ2Jngfd0yQPmSh41qmJXHHSwZfPZBxQnspKjbcC5qypM5DqX9oDSJm2l\n' +
-                'fM/weiUGnIf7AhUAgokTdF7G0USfpkUUOaBOmzx2RRkCgYAyy5WJDESLoU8vHbQc\n' +
-                'rAMnPZrImUwjFD6Pa3CxhkZrulsAOUb/gmc7B0K9I6p+UlJoAvVPXOBMVG/MYeBJ\n' +
-                '19/BH5UNeI1sGT5/Kg2k2rHVpuqzcvlS/qctIENgCNMo49l3LrkHbJPXKJ6bf+T2\n' +
-                '8lFWRP2kVlrx/cHdqSi6aHoGTAOBhAACgYBTNeXBHbWDOxzSJcD6q4UDGTnHaHHP\n' +
-                'JgeCrPkH6GBa9azUsZ+3MA98b46yhWO2QuRwmFQwPiME+Brim3tHlSuXbL1e5qKf\n' +
-                'GOm3OxA3zKXG4cjy6TyEKajYlT45Q+tgt1L1HuGAJjWFRSA0PP9ctC6nH+2N3HmW\n' +
-                'RTcms0CPio56gg==\n' +
-                '-----END PUBLIC KEY-----\n';
-                
-            var checkVersion = function(ver1, ver2) {
-                // returns `-` when ver2 less than
-                // returns `0` when ver2 equal
-                // returns `+` when ver2 greater than
-                var num;
-                ver1 = _.map(ver1.replace(/[^0-9.]/g, '').split('.'), function(num) { num = parseInt(num); return Number.isNaN(num) ? 0 : num; });
-                ver2 = _.map(ver2.replace(/[^0-9.]/g, '').split('.'), function(num) { num = parseInt(num); return Number.isNaN(num) ? 0 : num; });
+    //alert('Connection type: ' + states[networkState]);
+    return networkState;
+}
 
-                var count = Math.max(ver1.length, ver2.length);
+var version = {
+    v_online: '',
+    v_local: '',
+    v_description: '',
+    v_apk: ''
+};
 
-                for(var i = 0; i < count; i++) {
-                    if(ver1[i] === undefined) {
-                        ver1[i] = 0;
+function getUpdatable(url,key) {
+    var dtd = $.Deferred();
+        console.log(url);
+        $.mobile.loading( 'show', { theme: "b", text: 'Checking for update...', textonly: true, textVisible: true});
+        $.get(url)
+            .done( function(xml) {
+                alert('ret['+ url +']:'+ allPrpos(xml) );
+                if (xml.xmlVersion == '1.0' ) {
+                    version.v_online = $(xml).find(key).text();
+                    alert('online: '+ version.v_online );
+                    version.v_apk = $(xml).find("apk").text();
+                    version.v_description = $(xml).find("description").text();
+                    
+                    // get current version
+                    version.v_local = window.localStorage.getItem(key);
+                    if ( version.v_local == null ) {
+                        version.v_local = '0.0.1';
                     }
-
-                    if(ver2[i] === undefined) {
-                        ver2[i] = 0; 
+                    
+                    // new version?
+                    if ( version.v_local != version.v_online ) {
+                        $.mobile.loading( 'show', { theme: "b", text: 'New version available', textonly: true, textVisible: true});
+                        dtd.resolve();
+                    }else {
+                        $.mobile.loading( 'show', { theme: "b", text: 'Same version', textonly: true, textVisible: true});
+                        setTimeout("{ $.mobile.loading('hide');",5000);
+                        dtd.reject();
                     }
-
-                    if(i === count - 1) {
-                        if(ver1[i] === ver2[i]) {
-                            return 0;
-                        }
-                        
-                        if(ver1[i] > ver2[i]) {
-                            return 1;
-                        }
-                            
-                        return -1;
-                    }
-
-                    if(ver1[i] === ver2[i]) {
-                        continue;
-                    }
-                        
-                    if(ver1[i] > ver2[i]) {
-                        return 1;
-                    }
-                        
-                    return -1;
+                } else {
+                    console.log('error file info!');
+                    dtd.reject();
                 }
-            };
-
-            request(updateUrl, {json: true}, function(err, res, data) {
-                if(err || !data) { return; } // Its just an updater, we don't care :P
-
-                if(!_.contains(Object.keys(data), App.settings.os)) {
-                    // No update for this OS, FreeBSD or SunOS.
-                    // Must not be an official binary
-                    return;
-                }
-
-                var updateData = data[App.settings.os];
-
-                if(App.settings.os === 'linux') {
-                    updateData = updateData[App.settings.arch];
-                }
-
-                win.debug('Testing if we should install update...', checkVersion(updateData.version, App.settings.version) > 0);
-
-                // Should use SemVer here in v0.2.9 (refactor)
-                // As per checkVersion, -1 == lt; 0 == eq; 1 == gt
-                if(checkVersion(updateData.version, App.settings.version) > 0) {
-                    var outDir = CWD;
-                    var filename = 'package.nw.new';
-                    if(App.settings.os === 'linux') {
-                        outDir = process.execPath;
-                    }else if(App.settings.os === 'windows') {
-                        outDir = Settings.tmpLocation;
-                        filename = 'update.exe';
-                    }
-                    var outputFile = path.join(path.dirname(outDir), filename);
-                    var downloadRequest = request(updateData.updateUrl);
-                    downloadRequest.pipe(fs.createWriteStream(outputFile));
-                    downloadRequest.on('complete', function() {
-                        var hash = crypto.createHash('SHA1'),
-                            verify = crypto.createVerify('DSA-SHA1');
-                        fs.createReadStream(outputFile)
-                            .on('data', function(chunk) {
-                                hash.update(chunk);
-                                verify.update(chunk);
-                            })
-                            .on('end', function() {
-                                var checksum = hash.digest('hex');
-                                if(updateData.checksum !== checksum || verify.verify(VERIFY_PUBKEY, updateData.signature, 'base64') === false) {
-                                    // Corrupt download or tampered update
-                                    // Wait until next start to attempt the update again
-                                    if(fs.existsSync(outputFile)) {
-                                        fs.unlink(outputFile, function(err) {
-                                            if(err) { throw err; }
-                                        });
-                                    }
-                                } else {
-                                    // Valid update data! Overwrite the old data and move on with life!
-                                    var os = App.settings.os;
-
-                                    if(os === 'mac') {
-                                        installMac(outputFile, updateData);
-                                    } else if(os === 'linux') {
-                                        installLin(outputFile, updateData);
-                                    } else if(os === 'windows') {
-                                        installWin(outputFile, updateData);
-                                    } else {
-                                            return;
-                                    }
-                                }
-                            });
-                    });
-                }
+            })
+            .fail( function() {
+                $.mobile.loading( 'show', { theme: "b", text: 'Something is wrong with the updater, please check http://popcorntime.io', textonly: true, textVisible: true});
+                setTimeout("$.mobile.loading('hide')",5000);
+                dtd.reject();
             });
+    
+    return dtd.promise();
+}
+
+function checkUpdate() {
+    $.when(getUpdatable(initOptions.updateSite +'/update.xml?'+(new Date()).valueOf(),'version'))
+        .done( function () { alert('update Version!'); updateVersion(); } )
+        .fail( function () { alert("don't update!"); } )
+}
+
+function reqRoot() {
+    var dtd = $.Deferred();
+    window.requestFileSystem( LocalFileSystem.PERSISTENT, 0, 
+        function(fileSystem) {
+            //alert('fs over!');
+            dtd.resolve(fileSystem.root);
+        },
+        function(evt) {
+            console.log('reqRoot:' +evt.target.error.code);
+            alert('reqRoot:' +evt.target.error.code);
+            dtd.reject();
         }
+    );
+    return dtd.promise();
+}
 
-        // Under Windows, we download it as update.exe (built with NSIS)
-        // we run the updater and close PT to overwrite.
-        function installWin(dlPath, updateData) {
-            try {
-                var $el = $('#notification');
-                $el.html(
-                    '<h1>' + i18n.__('New version downloaded') + ': ' + updateData.title + '</h1>'   +
-                    '<p>&nbsp;- ' + updateData.description + '</p>' +
-                    '<span class="btn-grp">'                        +
-                        '<a class="btn chnglog">' + i18n.__('Changelog') + '</a>'      +
-                        '<a class="btn restart">' + i18n.__('Install Now') + '</a>'    +
-                    '</span>'
-                ).addClass('blue');
-
-                var $install = $('.btn.restart'),
-                    $chnglog = $('.btn.chnglog');
-
-                $install.on('click', function() {
-                    gui.Shell.openItem(dlPath);
-                    gui.App.quit();
-                });
-					
-                $chnglog.on('click', function() {
-                    gui.Shell.openExternal('http://blog.get-popcorn.com/');
-                });
-
-                $('body').addClass('has-notification');
-            } catch(err) {
-                // Dop! We have a update.exe and we can't use it... ;/
-                alert('Oops.. Something is wrong.\nPlease download latest version on http://get-popcorn.com\n\n'+err);
-            }
+function mkDir( entrydir, dir ) {
+    var dtd = $.Deferred();
+    entrydir.getDirectory( dir, {create:true,exclusive:false},
+        function(currentdir) {
+            //alert('mkDir('+ dir+ ') over');
+            dtd.resolve(currentdir);
+        },
+        function(evt) {
+            console.log( 'mkDir('+ dir+ '):' + evt.target.error.code);
+            dtd.reject();
         }
+    );
+    return dtd.promise();
+}
 
-        // Under Linux, we package the app alongside the binary
-        // in a file called 'package.nw'.
-        function installLin(dlPath, updateData) {
-            var outDir = path.dirname(dlPath);
-            fs.rename(path.join(outDir, 'package.nw'), path.join(outDir, 'package.nw.old'), function(err) {
-                if(err) { throw err; }
+function createFile( entrydir, fname ) {
+    var dtd = $.Deferred();
+    entrydir.getFile( fname, {create:true,exclusive:false},
+        function(parent) {
+            //alert('createFile('+ fname+ ') over');
+            dtd.resolve(parent, fname);
+        },
+        function(evt) {
+            console.log( 'createFile('+ fname+ '):' + evt.target.error.code);
+            dtd.reject();
+        }
+    );
+    return dtd.promise();
+}
 
-                fs.rename(dlPath, path.join(outDir, 'package.nw'), function(err) {
-                    if(err) {
-                        // Sheeet! We got a booboo :'(
-                        // Quick! Lets erase it before anyone realizes!
-                        if(fs.existsSync(dlPath)) {
-                            fs.unlink(dlPath, function(err) {
-                                if(err) { throw err; }
-                            });
-                        }
-                        throw err;
-                    } else {
-                        fs.unlink(path.join(outDir, 'package.nw.old'), function(err) {
-                            if(err) { throw err; }
-                            installationComplete(updateData);
+function updateVersion() {
+    $.mobile.loading( 'show', { theme: "b", text: 'Installing...', textonly: true, textVisible: true});
+    $.when(reqRoot())
+        .done( function (entrydir) {
+            $.when(mkDir(entrydir, "dir1")) //����Ŀ¼һ��
+                .done( function (entrydir2) {
+                    $.when(mkDir(entrydir2, "update")) //����Ŀ¼����
+                        .done( function (entrydir3) {
+                            $.when(createFile(entrydir3, version.v_apk ))
+                                .done( downloadApp ); //�����ļ�
                         });
-                    }
                 });
-            });
+        })
+        .always( function () { setTimeout("$.mobile.loading('hide')",3000); });
+}
+
+function downloadApp(parent, fname) {
+    alert("Start download... "+ fname);
+    var fileTransfer = new FileTransfer();
+    var uri = encodeURI(initOptions.updateSite +'/'+ fname);
+
+    fileTransfer.onprogress = function(progressEvent) {
+        if (progressEvent.lengthComputable) {
+            var percentLoaded = Math.round(100 * (progressEvent.loaded / progressEvent.total));  
+            $.mobile.loading( 'show', { theme: "b", text: 'Downloading: '+ percentLoaded +'% \nTotal:'+ progressEvent.loaded + "/" + progressEvent.total, textVisible: true});
+
+            if( progressEvent.loaded == progressEvent.total ) {
+                $.mobile.loading( 'show', { theme: "b", text: 'Extracting... ', textonly: true, textVisible: true});
+            }
+        } else {  
+            $.mobile.loading( 'show', { theme: "b", text: 'Downloading :'+ progressEvent.loaded, textVisible: true});
         }
+    };
 
-        // Under Mac, we install the app into a folder called 
-        // 'app.nw' under the 'Resources' directory of the .app
-        function installMac(dlPath, updateData) {
-            var outDir = path.dirname(dlPath),
-                installDir = path.join(outDir, 'app.nw');
-            rm(installDir, function(err) {
-                if(err) { throw err; }
-
-                var pack = new zip(dlPath);
-                try {
-                    pack.extractAllTo(installDir, true);
-                    fs.unlink(dlPath, function(err) {
-                        if(err) { throw err; }
-                        installationComplete(updateData);
-                    });
-                } catch(ex) {
-                    // Dunno what to do here :( We deleted the app files, 
-                    // and now we can't extract it... sheet!
-                }
-            });
+    fileTransfer.download( uri, parent.fullPath,
+        function(entry){ 
+            window.plugins.update.openFile(entry.fullPath,null,null); //use the plugin
+            window.localStorage.setItem('version',version.v_online);
+        },
+        function(error) {
+            console.log("download error source " + error.source);
+            console.log("download error target " + error.target);
+            console.log("upload error code" + error.code);
+            $.mobile.loading( 'show', { theme: "b", text: "Unable to install latets update. Please visit http://popcorntime.io ", textonly: true, textVisible: true});
+            setTimeout("$.mobile.loading('hide');",5000);
         }
-
-        function installationComplete(updateData) {
-            var $el = $('#notification');
-            $el.html(
-                '<h1>' + updateData.title + ' ' + i18n.__('Installed') + '</h1>'   +
-                '<p>&nbsp;- ' + updateData.description + '</p>' +
-                '<span class="btn-grp">'                        +
-                    '<a class="btn chnglog">' + i18n.__('Changelog') + '</a>'      +
-                    '<a class="btn restart">' + i18n.__('Restart Now') + '</a>'    +
-                '</span>'
-            ).addClass('blue');
-
-            var $restart = $('.btn.restart'),
-                $chnglog = $('.btn.chnglog');
-
-            $restart.on('click', function() {
-                var spawn = require('child_process').spawn,
-                    argv = gui.App.fullArgv;
-                argv.push(CWD);
-                spawn(process.execPath, argv, { cwd: CWD, detached: true, stdio: [ 'ignore', 'ignore', 'ignore' ] }).unref();
-                gui.App.quit();
-            });
-                
-            $chnglog.on('click', function() {
-                gui.Shell.openExternal('http://blog.get-popcorn.com/');
-            });
-
-            $('body').addClass('has-notification');
-        }
-    }
+    );
+}
