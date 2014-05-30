@@ -36,15 +36,6 @@
             }
         },
 
-        onResize: function() {
-            var movieItem = $('.movie-item');
-            var movieItemFullWidth = movieItem.width() + parseInt(movieItem.css('marginLeft')) + parseInt(movieItem.css('marginRight'));
-            var movieItemAmount = $('.movie-list').width() / movieItemFullWidth;
-            movieItemAmount = Math.floor(movieItemAmount);
-
-            var newWidth = movieItemAmount * movieItemFullWidth;
-            $('.movies').width(newWidth);
-        },
 
         ui: {
             spinner: '.spinner'
@@ -67,9 +58,7 @@
 
         },
 
-        remove: function() {
-            $(window).off('resize', this.onResize);
-        },
+
 
         onShow: function() {
             if(this.collection.state === 'loading') {
@@ -102,8 +91,6 @@
                 $('.status-loadmore').show();
             }
 
-            $(window).on('resize', this.onResize);
-            this.onResize();
             this.ui.spinner.hide();
 			
             $('.filter-bar').on('mousedown', function(e){
