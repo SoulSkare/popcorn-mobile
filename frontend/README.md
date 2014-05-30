@@ -3,6 +3,9 @@
 ### Idea
 Connect to backend and get stream information
 
+### Tasks
+[View Frontend task on Trello](https://trello.com/c/Brq3YC39/68-psd-html-mobile-app-urgent)
+
 ***
 
 ### Development mode:
