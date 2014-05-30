@@ -12,7 +12,7 @@ Connect to backend and get stream information
 
  1. `npm install`
  2. `npm install -g phonegap`
- 2. `phonegap serve`
+ 3. `phonegap serve`
 
 After that, you can visit `http://localhost:3000` in your browser.
 
