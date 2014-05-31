@@ -47,7 +47,7 @@
         <ul class="menu-base">
             <li class="selected">Movies</li>
             <li>Tv Series</li>
-            <li>Genre</li>
+            <li class="genre-sub-menu">Genre</li>
             <li>Sort By</li>
             <li>Bookmarks</li>
             <li>Setting</li>
@@ -67,13 +67,23 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>
         $(".popcorn-menu-icon").on("click tap", function(e){
-            $(".menu").css("right", 0);
+            $(".menu").animate({right: 0}, 500);
             $(".menu-overlay").css('display', 'block');
-        })
+        });
         $(".menu-overlay").on("click tap", function(e){
-            $(".menu").css("right", "-270px");
+            $(".sub-menu").animate({right: "-230px"}, 500);
+            $(".menu").animate({right: "-270px"}, 500);
             $(".menu-overlay").css('display', 'none');
+        });
+         $(".genre-sub-menu").on("click tap", function(e){
+            $(".sub-menu").animate({right: 0}, 500);
+        });
+         $(".menu").on("click tap", function(e){
+            if ($(".sub-menu").css("right") == "0") {
+                $(".sub-menu").animate({right: "-230px"}, 500);
+            };
         })
+        
     </script>
 
 </body>

@@ -35,54 +35,54 @@
 		transition: all 0.3s;
 	}
 
-.sub-menu{
-	z-index: 11;
-	height: 100%;
-	position: fixed;
-	background: #0C0C0C;
-	right: 0;
-	width: 230px;
-	overflow: auto;
-	top: 0;
-	box-shadow: 6px 0px 14px 6px #000;
-}
-	.sub-menu div{
-		padding: 10px;
-		transition: all 0.3s;
-		list-style: none;
-		color: #FFF;
-		font-family: 'Roboto', sans-serif;
-		font-size: 24px;
-		font-weight: 400;
-		margin: 0;
-		background: rgba(0, 0, 0, 0.98);
-		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.95);
+	.sub-menu{
+		z-index: 11;
+		height: 100%;
 		position: fixed;
-		width: 100%;
+		background: #0C0C0C;
+		right: -230px;
+		width: 230px;
+		overflow: auto;
+		top: 0;
+		box-shadow: 6px 0px 14px 6px #000;
 	}
-	.menu-genre{
-		padding: 10px 30px;
-		border-left: 5px solid rgba(0, 0, 0, 0);
-		transition: all 0.3s;
-		list-style: none;
-		color: #FFF;
-		font-family: 'Roboto', sans-serif;
-		font-size: 24px;
-		font-weight: 400;
-		margin: 45px 0 10px 0;
-	}
-	.menu-genre li{
-		padding: 7px;
-		border-left: 5px solid rgba(0, 0, 0, 0);
-		transition: all 0.3s;
-		width: 100%;
-	}
-	.menu-genre li:hover{
-		background: rgba(0, 0, 0, 0.27);
-		width: 100%;
-		border-left: 5px solid rgba(66, 66, 66, 0.64);
-	}
-	.menu-genre li.selected{
-		border-left: 5px solid #7C7C7C !important;
-		transition: all 0.3s;
-	}
+		.sub-menu div{
+			padding: 10px;
+			transition: all 0.3s;
+			list-style: none;
+			color: #FFF;
+			font-family: 'Roboto', sans-serif;
+			font-size: 24px;
+			font-weight: 400;
+			margin: 0;
+			background: rgba(0, 0, 0, 0.98);
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.95);
+			position: fixed;
+			width: 100%;
+		}
+		.menu-genre{
+			padding: 10px 30px;
+			border-left: 5px solid rgba(0, 0, 0, 0);
+			transition: all 0.3s;
+			list-style: none;
+			color: #FFF;
+			font-family: 'Roboto', sans-serif;
+			font-size: 24px;
+			font-weight: 400;
+			margin: 45px 0 10px 0;
+		}
+		.menu-genre li{
+			padding: 7px;
+			border-left: 5px solid rgba(0, 0, 0, 0);
+			transition: all 0.3s;
+			width: 100%;
+		}
+		.menu-genre li:hover{
+			background: rgba(0, 0, 0, 0.27);
+			width: 100%;
+			border-left: 5px solid rgba(66, 66, 66, 0.64);
+		}
+		.menu-genre li.selected{
+			border-left: 5px solid #7C7C7C !important;
+			transition: all 0.3s;
+		}
