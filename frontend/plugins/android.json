@@ -9,11 +9,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
                         }
                     ],
@@ -64,13 +64,13 @@
         }
     },
     "installed_plugins": {
-        "org.apache.cordova.network-information": {
+        "org.common.plugins.updateapp": {
             "PACKAGE_NAME": "com.popcorntime.mobile"
         },
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.popcorntime.mobile"
         },
-        "org.common.plugins.updateapp": {
+        "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.popcorntime.mobile"
         }
     },
