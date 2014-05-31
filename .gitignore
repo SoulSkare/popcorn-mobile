@@ -1,6 +1,7 @@
 backend/node_modules/
 frontend/node_modules/
 frontend/www/vendor/
+frontend/platforms/
 frontend/www/css/app.css
 
 npm-debug.log
