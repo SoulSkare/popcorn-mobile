@@ -5,3 +5,4 @@ frontend/www/css/app.css
 frontend/platforms/
 npm-debug.log
 .idea
+popcorntime/.cordova/config.json

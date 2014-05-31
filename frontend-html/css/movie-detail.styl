@@ -1,0 +1,81 @@
+.popcorn-movie-detail
+    position absolute
+    width 100%
+    height calc(100% - 100px)
+
+    .popcorn-movie-detail-title
+        position relative
+        margin-left 40px
+        margin-top 30px
+        color #fff
+        /* text color */
+        font-family 'Roboto', sans-serif
+        font-size 36px
+        font-weight 400
+        width auto
+        float none
+
+    .popcorn-movie-detail-meta
+        margin-left 20px
+        margin-top 18px
+        color #5b5b5b
+        /* text color */
+        font-family 'Roboto', sans-serif
+        font-size 24px
+        font-weight 400
+        width auto
+        float left
+
+    .popcorn-movie-detail-star-container
+        margin-top 20px
+        margin-left 40px
+        height 27px
+        width auto
+        float left
+
+        .popcorn-movie-detail-star
+            margin-right 5px
+            width 29px
+            height 27px
+            float left
+            position relative
+            background-repeat no-repeat
+
+    .popcorn-movie-detail-star.gold
+        background-image url('../assets/star-gold.png')
+
+    .popcorn-movie-detail-star.gray
+        background-image url('../assets/star-gray.png')
+
+    .movie-btn-watch
+        width 180px
+        z-index 2
+        margin-top 90px
+        margin-left 40px
+        position relative
+        cursor pointer
+        height 59px
+        -webkit-border-radius 3px
+        -webkit-background-clip padding
+        background-clip padding-box
+        background-color #1f375f
+        padding 0 15px
+        -webkit-transition background-color 0.5s
+
+        &:hover
+            background #225694
+            text-decoration none
+
+        &:active
+            -webkit-box-shadow inset 0 1px 4px rgba(0, 0, 0, 0.6)
+            box-shadow inset 0 1px 4px rgba(0, 0, 0, 0.6)
+            background #2875e5
+            border solid 1px #2468cc
+
+        .movie-watch-now
+            color #fff
+            position absolute
+            width auto
+            float none
+            margin-top 20px
+            margin-left 50px
