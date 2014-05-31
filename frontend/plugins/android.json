@@ -5,6 +5,36 @@
     },
     "config_munge": {
         "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        }
+                    ],
+                    "plugins": [
+                        {
+                            "xml": "<plugin name=\"Update\" value=\"org.common.plugins.updateapp.Update\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
             "config.xml": {
                 "parents": {
                     "/*": [
@@ -30,48 +60,18 @@
                         }
                     ]
                 }
-            },
-            "res/xml/config.xml": {
-                "parents": {
-                    "plugins": [
-                        {
-                            "xml": "<plugin name=\"Update\" value=\"org.common.plugins.updateapp.Update\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/*": [
-                        {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
-            "AndroidManifest.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
-                        }
-                    ]
-                }
             }
         }
     },
     "installed_plugins": {
-        "org.common.plugins.updateapp": {
-            "PACKAGE_NAME": "com.popcorntime.mobile"
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "io.popcorntime.frontend"
         },
         "org.apache.cordova.network-information": {
-            "PACKAGE_NAME": "com.popcorntime.mobile"
+            "PACKAGE_NAME": "io.popcorntime.frontend"
         },
-        "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.popcorntime.mobile"
+        "org.common.plugins.updateapp": {
+            "PACKAGE_NAME": "io.popcorntime.frontend"
         }
     },
     "dependent_plugins": {}
