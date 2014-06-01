@@ -42,6 +42,7 @@
 
 
             $(".popcorn-menu-icon").on("click tap", function(e){
+                $(".sub-menu").css({right: "-230px"}, 500) //make sure it is hidden on main open
                 $(".menu").animate({right: 0}, 500)
                 $(".menu-overlay").css('display', 'block')
             })
