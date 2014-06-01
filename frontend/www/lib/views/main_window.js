@@ -82,6 +82,10 @@
                 App.vent.trigger('main:ready'); 
             });
 
+
+           
+
+
         },
 
         showMovies: function(e) {

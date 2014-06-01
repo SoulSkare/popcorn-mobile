@@ -31,7 +31,7 @@
 			</li>
 		</ul>-->
 		<ul id="nav-menu">
-		<div class="menu">
+		<div class="menu-andriod">
             <ul class="menu-base">
                 <li class="selected">Movies</li>
                 <li>Tv Series</li>

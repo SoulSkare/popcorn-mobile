@@ -40,6 +40,39 @@
                 dragOpen: true
             });
 
+
+            $(".popcorn-menu-icon").on("click tap", function(e){
+                $(".menu").animate({right: 0}, 500)
+                $(".menu-overlay").css('display', 'block')
+            })
+
+            $(".menu-overlay").on("click tap", function(e){
+                $(".sub-menu").animate({right: "-230px"}, 500)
+                $(".menu").animate({right: "-270px"}, 500)
+                $(".menu-overlay").css('display', 'none')
+            })
+
+            $(".genre-sub-menu").on("click tap", function(e){
+                $(".sub-menu").animate({right: 0}, 500)
+            })
+
+            $(".menu").on("click tap", function(e){
+                if ($(".sub-menu").css("right") == "0px") {
+                    $(".sub-menu").animate({right: "-230px"}, 500)
+                }
+            })
+
+            $(".menu-base li").on("click tap", function(e){
+                $(".menu-base li").removeClass("selected")
+                $(this).addClass("selected")
+            })
+
+            $(".sub-menu li").on("click tap", function(e){
+                $(".sub-menu li").removeClass("selected")
+                $(this).addClass("selected")
+            })
+
+
         },
         
         focusSearch: function () {
