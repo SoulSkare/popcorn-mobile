@@ -1,4 +1,4 @@
-            <div class="popcorn-logo"></div>
+            <img src='../images/LOGO.png' class="popcorn-logo"/>
             <a class="popcorn-menu-icon" href="#nav-menu"></a>
             <div class="popcorn-search-icon"></div>
 
