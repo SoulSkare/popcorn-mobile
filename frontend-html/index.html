@@ -1,91 +1,90 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+        <link href="css/movie-item.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/header.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/menu.css" media="all" rel="stylesheet" type="text/css" />
+    </head>
 
-<head>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
-    <link href="css/movie-item.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="css/header.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="css/menu.css" media="all" rel="stylesheet" type="text/css" />
-</head>
+    <body>
+        <div class="main-container">
+            <div class="header-container">
+                <div class="popcorn-logo"></div>
+                <div class="popcorn-menu-icon"></div>
+                <div class="popcorn-search-icon"></div>
+            </div>
+            <div class="popcorn-movie-item">
+                <div class="popcorn-movie-title">Gravity</div>
+                <div class="popcorn-movie-year">2013</div>
+                <div class="popcorn-movie-open-icon"></div>
+                <div class="popcorn-movie-seperator"></div>
+            </div>
 
-
-<body>
-
-
-    <div class="main-container">
-
-
-        <div class="header-container">
-            <div class="popcorn-logo"></div>
-            <div class="popcorn-menu-icon"></div>
-            <div class="popcorn-search-icon"></div>
+            <div class="popcorn-movie-item">
+                <div class="popcorn-movie-title">Robocop</div>
+                <div class="popcorn-movie-year">2014</div>
+                <div class="popcorn-movie-open-icon"></div>
+                <div class="popcorn-movie-seperator"></div>
+            </div>
         </div>
-        <div class="popcorn-movie-item">
 
-            <div class="popcorn-movie-title">Gravity</div>
-            <div class="popcorn-movie-year">2013</div>
-            <div class="popcorn-movie-open-icon"></div>
-            <div class="popcorn-movie-seperator"></div>
-
-        </div>
-
-        <div class="popcorn-movie-item">
-
-            <div class="popcorn-movie-title">Robocop</div>
-            <div class="popcorn-movie-year">2014</div>
-
-            <div class="popcorn-movie-open-icon"></div>
-            <div class="popcorn-movie-seperator"></div>
-
-        </div>
-    
-    </div>
-
-    <div class="menu-overlay"></div>
-    <div class="menu">
-        <ul class="menu-base">
-            <li class="selected">Movies</li>
-            <li>Tv Series</li>
-            <li class="genre-sub-menu">Genre</li>
-            <li>Sort By</li>
-            <li>Bookmarks</li>
-            <li>Setting</li>
-            <li>Info</li>
-        </ul>
-        <div class="sub-menu">
-            <div> < back</div>
-            <ul class="menu-genre">
-                <li class="selected">Action</li>
-                <li>Action</li>
-                <li>Action</li>
-                <li>Action</li>
-                <li>Action</li>
+        <div class="menu-overlay"></div>
+        <div class="menu">
+            <ul class="menu-base">
+                <li class="selected">Movies</li>
+                <li>Tv Series</li>
+                <li class="genre-sub-menu">Genre</li>
+                <li>Sort By</li>
+                <li>Bookmarks</li>
+                <li>Setting</li>
+                <li>Info</li>
             </ul>
+            <div class="sub-menu">
+                <div> < back</div>
+                <ul class="menu-genre">
+                    <li class="selected">Action</li>
+                    <li>Action</li>
+                    <li>Action</li>
+                    <li>Action</li>
+                    <li>Action</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script>
-        $(".popcorn-menu-icon").on("click tap", function(e){
-            $(".menu").animate({right: 0}, 500);
-            $(".menu-overlay").css('display', 'block');
-        });
-        $(".menu-overlay").on("click tap", function(e){
-            $(".sub-menu").animate({right: "-230px"}, 500);
-            $(".menu").animate({right: "-270px"}, 500);
-            $(".menu-overlay").css('display', 'none');
-        });
-         $(".genre-sub-menu").on("click tap", function(e){
-            $(".sub-menu").animate({right: 0}, 500);
-        });
-         $(".menu").on("click tap", function(e){
-            console.log($(".sub-menu").css("right"));
-            if ($(".sub-menu").css("right") == "0px") {
-                $(".sub-menu").animate({right: "-230px"}, 500);
-            };
-        })
-        
-    </script>
 
-</body>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script>
+            $(".popcorn-menu-icon").on("click tap", function(e){
+                $(".menu").animate({right: 0}, 500)
+                $(".menu-overlay").css('display', 'block')
+            })
+
+            $(".menu-overlay").on("click tap", function(e){
+                $(".sub-menu").animate({right: "-230px"}, 500)
+                $(".menu").animate({right: "-270px"}, 500)
+                $(".menu-overlay").css('display', 'none')
+            })
+
+            $(".genre-sub-menu").on("click tap", function(e){
+                $(".sub-menu").animate({right: 0}, 500)
+            })
+
+            $(".menu").on("click tap", function(e){
+                if ($(".sub-menu").css("right") == "0px") {
+                    $(".sub-menu").animate({right: "-230px"}, 500)
+                }
+            })
+
+            $(".menu-base li").on("click tap", function(e){
+                $(".menu-base li").removeClass("selected")
+                $(this).addClass("selected")
+            })
+
+            $(".sub-menu li").on("click tap", function(e){
+                $(".sub-menu li").removeClass("selected")
+                $(this).addClass("selected")
+            })
+        </script>
+    </body>
 </html>
