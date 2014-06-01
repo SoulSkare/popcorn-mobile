@@ -28,6 +28,8 @@ app.get('/api/streamer', streamer.get);
 //Stop engine
 app.delete('/api/streamer', streamer.delete);
 
+var ip = require("ip");
+
 var server = app.listen(8080, function () {
-    console.log('Listening on port %d', server.address().port);
+    console.log('Listening on '+ ip.address() +':%d', server.address().port);
 });

@@ -5,6 +5,9 @@ var
   StreamInfo = require('./stream_info').StreamInfo
 ;
 
+var ip = require("ip");
+
+
 var App = {};
 
 var BUFFERING_SIZE = 10 * 1024 * 1024;
@@ -99,7 +102,7 @@ function handleTorrent(torrent) {
 
   engine.server.on('listening', function () {
     console.log('listening');
-    streamInfo.set('src', 'http://localhost:' + engine.server.address().port + '/');
+    streamInfo.set('src', 'http://' + ip.address() + ':' + engine.server.address().port + '/');
     streamInfo.set('type', 'video/mp4');
   });
 
