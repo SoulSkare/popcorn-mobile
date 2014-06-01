@@ -30,14 +30,26 @@
 				</ul>
 			</li>
 		</ul>-->
-		<ul class="nav nav-hor right" id="nav-menu">
-			<li>
-				<div class="right search">
-					<form><input type="text" placeholder="<%= i18n.__("Search") %>"></form>
-				</div>
-			</li>
-			<li><button class="favorites"></button></li>
-			<li><button class="about"></button></li>
-			<li><button class="settings"></button></li>
-			<li><img src="../images/MENU ICON.png" class="show_menu"></li>
+		<ul id="nav-menu">
+		<div class="menu">
+            <ul class="menu-base">
+                <li class="selected">Movies</li>
+                <li>Tv Series</li>
+                <li class="genre-sub-menu">Genre</li>
+                <li>Sort By</li>
+                <li>Bookmarks</li>
+                <li>Setting</li>
+                <li>Info</li>
+            </ul>
+            <div class="sub-menu">
+                <div> < back</div>
+                <ul class="menu-genre">
+                    <li class="selected">Action</li>
+                    <li>Action</li>
+                    <li>Action</li>
+                    <li>Action</li>
+                    <li>Action</li>
+                </ul>
+            </div>
+        </div>
 		</ul>
