@@ -56,7 +56,7 @@
                 $(".sub-menu").animate({right: 0}, 500)
             })
 
-            $(".menu").on("click tap", function(e){
+            $("#menu-back").on("click tap", function(e){
                 if ($(".sub-menu").css("right") == "0px") {
                     $(".sub-menu").animate({right: "-230px"}, 500)
                 }

@@ -42,7 +42,7 @@
                 <li>Info</li>
             </ul>
             <div class="sub-menu">
-                <div> < back</div>
+                <div id="menu-back"> < back</div>
                 <ul class="menu-genre">
                     <li class="selected">Action</li>
                     <li>Action</li>
