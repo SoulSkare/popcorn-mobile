@@ -42,39 +42,39 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
         exec:{
 			addPlatform:{
-				command:"node_modules/.bin/cordova platforms add android",
+				command:"cordova platforms add android",
 				stdout:true,
 				stderror:true
 			},
 			rmPlatform:{
-				command:"node_modules/.bin/cordova platforms rm android",
+				command:"cordova platforms rm android",
 				stdout:true,
 				stderror:true
 			},
 			prepare:{
-				command:"node_modules/.bin/cordova prepare",
+				command:"cordova prepare",
 				stdout:true,
 				stderror:true
 			},
 			build:{
-				command:"node_modules/.bin/cordova build android",
+				command:"cordova build android",
 				stdout:true,
 				stderror:true
 			},
 			run:{
-				command:"node_modules/.bin/cordova run android",
+				command:"cordova run android",
 				stdout:true,
 				stderror:true
 			},
 
 			serve:{
-				command:"node_modules/.bin/phonegap serve",
+				command:"phonegap serve",
 				stdout:true,
 				stderror:true
 			},			
-			plugins_device: 'node_modules/.bin/cordova plugin add org.apache.cordova.device',
-			plugins_network: 'node_modules/.bin/cordova plugin add org.apache.cordova.network-information',
-			plugins_update: 'node_modules/.bin/cordova plugin add https://github.com/popcorn-official/codova-update-plugin.git'
+			plugins_device: 'cordova plugin add org.apache.cordova.device',
+			plugins_network: 'cordova plugin add org.apache.cordova.network-information',
+			plugins_update: 'cordova plugin add https://github.com/popcorn-official/codova-update-plugin.git'
 
         },
 
