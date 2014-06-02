@@ -6,7 +6,7 @@ var Backend = {
         document.getElementById("initbar-contents").style.width="20%";
 
         // DEV MODE (SKIP CHECK)
-        //callback();
+        callback();
         
         $.get('http://localhost:8080/api/status', function (data, status, jqXHR) {
 
