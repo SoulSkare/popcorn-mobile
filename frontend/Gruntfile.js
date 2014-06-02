@@ -18,14 +18,23 @@ module.exports = function(grunt) {
 		'exec:build'
 	]);
 
+	grunt.registerTask('fix', [
+		'exec:rmPlatform',
+		'init'
+	]);
+
+	grunt.registerTask('run', [
+		'stylus',
+		'exec:run'
+	]);		
+
 	grunt.registerTask('css', [
 		'stylus'
 	]);	
 
 	grunt.registerTask('serve', [
 		'stylus',
-		'connect',
-		'watch'
+		'exec:serve'
 	]);
 
     grunt.initConfig({
@@ -33,44 +42,41 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
         exec:{
 			addPlatform:{
-				command:"cordova platforms add android",
+				command:"node_modules/.bin/cordova platforms add android",
+				stdout:true,
+				stderror:true
+			},
+			rmPlatform:{
+				command:"node_modules/.bin/cordova platforms rm android",
 				stdout:true,
 				stderror:true
 			},
 			prepare:{
-				command:"cordova prepare",
+				command:"node_modules/.bin/cordova prepare",
 				stdout:true,
 				stderror:true
 			},
 			build:{
-				command:"cordova build android",
+				command:"node_modules/.bin/cordova build android",
 				stdout:true,
 				stderror:true
 			},
 			run:{
-				command:"cordova run android",
+				command:"node_modules/.bin/cordova run android",
 				stdout:true,
 				stderror:true
 			},
-			
-			plugins_device: 'cordova plugin add org.apache.cordova.device',
-			plugins_network: 'cordova plugin add org.apache.cordova.network-information',
-			plugins_update: 'cordova plugin add https://github.com/popcorn-official/codova-update-plugin.git'
-			
-        },
 
-		connect: {
-			server: {
-					options: {
-					port: 8000,
-					base: './www/',
-					hostname: 'localhost',
-					debug: true,
-					//keepalive: true,
-					livereload: true
-				}
-			}
-		},
+			serve:{
+				command:"node_modules/.bin/phonegap serve",
+				stdout:true,
+				stderror:true
+			},			
+			plugins_device: 'node_modules/.bin/cordova plugin add org.apache.cordova.device',
+			plugins_network: 'node_modules/.bin/cordova plugin add org.apache.cordova.network-information',
+			plugins_update: 'node_modules/.bin/cordova plugin add https://github.com/popcorn-official/codova-update-plugin.git'
+
+        },
 
 		stylus: {
 			compile: {
@@ -100,21 +106,6 @@ module.exports = function(grunt) {
 				src: ['www/lib/*.js','www/lib/**/*.js','www/*.js','www/*.html']
 			}
 		},
-
-		watch: {
-			options: {
-				livereload: true,
-				dateFormat: function(time) {
-					grunt.log.writeln('Completed in ' + time + 'ms at ' + (new Date()).toLocaleTimeString());
-					grunt.log.writeln('Waiting for more changes...');
-				},
-			},
-			scripts: {
-				files: ['./www/styl/*.styl','./www/styl/**/*.styl','./www/**/*.js','./www/*.js','./www/templates/*.tpl','./www/index.html'],
-				tasks: ['css']
-			},
-		},
-
 
 	});
 
