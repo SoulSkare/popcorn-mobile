@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+        <link href="css/movie-item.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/header.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/menu.css" media="all" rel="stylesheet" type="text/css" />
+
+        <link href="css/settings.css" media="all" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class="header-container">
+                <div class="popcorn-logo"></div>
+                <div class="popcorn-menu-icon"></div>
+                <div class="popcorn-search-icon"></div>
+            </div><!-- .header-container-->
+
+            <div class="settings-container">
+                <h2>Settings</h2>
+
+                <div class="content">
+                    <div>
+                        <h3>User Interface</h3>
+                        <div class="dropdown subtitles-language">
+                            <label for="language">Default Language:</label>
+                            <select name="language" id="language">
+                                <option value="">English</option>
+                                <option value="">Català</option>
+                                <option value="">Português (Brasil)</option>
+                            </select>
+
+                            <div class="dropdown-arrow"></div>
+                        </div><!-- .subtitles-language -->
+                    </div>
+
+                    <div>
+                        <h3>Movies</h3>
+                        <input name="movie-quality" id="movie-quality" type="checkbox">
+                        <label class="label" for="movie-quality">Show movie quality on list</label>
+
+                        <div class="dropdown movies-quality">
+                            <label for="movies-quality">Only list movies in:</label>
+
+                            <select name="movies-quality" id="movies-quality">
+                                <option value="all">All</option>
+                                <option value="1080p">1080p</option>
+                                <option value="720p">720p</option>
+                            </select>
+
+                            <div class="dropdown-arrow"></div>
+                        </div><!-- .movies-quality -->
+                    </div>
+
+                    <div>
+                        <h3>Subtitles</h3>
+
+                        <div class="mob">
+                            <div class="dropdown mob-5">
+                                <label for="subtitle-language">Default Subtitle:</label>
+
+                                <select name="subtitle-language" id="subtitle-language">
+                                    <option value="">Disabled</option>
+                                </select>
+
+                                <div class="dropdown-arrow"></div>
+                            </div><!-- .subtitle-language -->
+
+                            <div class="dropdown mob-5 mob-right">
+                                <label for="subtitle-size">Size:</label>
+
+                                <select name="subtitle-size" id="subtitle-size">
+                                    <option value="26">26px</option>
+                                    <option value="28">28px</option>
+                                    <option value="30">30px</option>
+                                </select>
+
+                                <div class="dropdown-arrow"></div>
+                            </div><!-- .subtitle-size -->
+                        </div><!-- .mob -->
+                    </div>
+
+                    <div>
+                        <h3>More Options</h3>
+                        <label for="api-endpoint">TV Show API Endpoint:</label>
+                        <input type="text" size="50" name="api-endpoint" id="api-endpoint" value="http://eztvapi.re/">
+                    </div>
+
+                    <div class="advanced-settings">
+                        <h3>Advanced Settings</h3>
+
+                        <div class="mob">
+                            <div class="mob-5">
+                                <label for="connection-limit">Connection Limit:</label>
+                                <input type="text" name="connection-limit" id="connection-limit" value="100">
+                            </div>
+
+                            <div class="mob-5 mob-right">
+                                <label for="dht-limit">DHT Limit:</label>
+                                <input type="text" name="dht-limit" id="dht-limit" value="10000">
+                            </div>
+                        </div><!-- .mob -->
+
+                        <label for="cache-directory" class="label-cache">Cache Directory:</label>
+                        <input type="text" name="fake-cache" id="fake-cache" class="fake-cache" value="/var/folders/gc/09r89/T/Popcorn-Time" readonly>
+                        <input type="file" name="cache-directory" id="cache-directory" class="cache-directory" value="/var/folders/gc/09r89/T/Popcorn-Time" nwdirectory>
+
+                        <input class="clear-tmp" name="clear-tmp" id="clear-tmp" type="checkbox">
+                        <label for="clear-tmp" class="label checked">Clear Tmp Folder after closing app?</label>
+                    </div>
+
+                    <div class="btns">
+                        <button class="flush-bookmarks">Flush bookmarks database</button>
+                        <button class="flush-subtitles">Flush subtitles cache</button>
+                        <button class="flush-databases">Flush all databases</button>
+                        <button class="reset-settings">Reset to Default Settings</button>
+                    </div>
+                </div><!-- .content-->
+
+            </div><!-- .settings-container-->
+        </div><!-- .main-container-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    </body>
+</html>

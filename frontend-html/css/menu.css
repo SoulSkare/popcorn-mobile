@@ -7,7 +7,7 @@
 	display: none;
 }
 
-.menu{
+.menu {
 	z-index: 10;
 	height: 100%;
 	position: fixed;
@@ -30,6 +30,11 @@
 
 .menu-base li, .sub-menu li, .sub-menu div {
     cursor: pointer;
+}
+
+.menu-base a, .sub-menu a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .menu .menu-base > li {
