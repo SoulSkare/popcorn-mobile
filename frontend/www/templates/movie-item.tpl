@@ -7,6 +7,6 @@
 			</p>
 		<% } %>
 
-		            <div class="popcorn-movie-open-icon"></div>
+		            <img src="images/icons/blue-arrow.png" class="popcorn-movie-open-icon"/>
             <div class="popcorn-movie-seperator"></div>
 
