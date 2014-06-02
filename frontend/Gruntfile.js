@@ -9,9 +9,18 @@ module.exports = function(grunt) {
 		'watch'
 	]);
 
+	grunt.registerTask('init', [
+		'exec:addPlatform',
+		'exec:plugins_device',
+		'exec:plugins_network',
+		'exec:plugins_update',
+		'exec:prepare',
+		'exec:build'
+	]);
+
 	grunt.registerTask('css', [
 		'stylus'
-	]);
+	]);	
 
 	grunt.registerTask('serve', [
 		'stylus',
@@ -20,6 +29,35 @@ module.exports = function(grunt) {
 	]);
 
     grunt.initConfig({
+
+		pkg: grunt.file.readJSON('package.json'),
+        exec:{
+			addPlatform:{
+				command:"cordova platforms add android",
+				stdout:true,
+				stderror:true
+			},
+			prepare:{
+				command:"cordova prepare",
+				stdout:true,
+				stderror:true
+			},
+			build:{
+				command:"cordova build android",
+				stdout:true,
+				stderror:true
+			},
+			run:{
+				command:"cordova run android",
+				stdout:true,
+				stderror:true
+			},
+			
+			plugins_device: 'cordova plugin add org.apache.cordova.device',
+			plugins_network: 'cordova plugin add org.apache.cordova.network-information',
+			plugins_update: 'cordova plugin add https://github.com/popcorn-official/codova-update-plugin.git'
+			
+        },
 
 		connect: {
 			server: {

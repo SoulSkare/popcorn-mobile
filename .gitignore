@@ -1,8 +1,9 @@
 backend/node_modules/
-frontend/node_modules/
-frontend/www/vendor/
-frontend/platforms/
 frontend/www/css/app.css
+frontend/www/vendor/
+frontend/node_modules/
+frontend/platforms/
+frontend/plugins/
 
 npm-debug.log
 .idea
@@ -34,4 +35,4 @@ proguard/
 
 #Log Files
 *.log
-frontend/plugins/android.json
+
