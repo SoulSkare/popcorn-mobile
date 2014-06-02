@@ -27,6 +27,13 @@
                 return;
             }
 
+
+            $.mobile.loading( 'show', {
+                text: 'Loading...',
+                textVisible: true,
+                theme: 'a'
+            });
+
             this.state = 'loading';
             self.trigger('loading', self);
 
@@ -60,7 +67,8 @@
                     self.add(movies);
                     self.trigger('sync', self);
                     self.state = 'loaded';
-                    self.trigger('loaded', self, self.state);                    
+                    self.trigger('loaded', self, self.state);     
+                    $.mobile.loading( 'hide');              
                 })
                 .catch(function(err) {
                     self.state = 'error';
