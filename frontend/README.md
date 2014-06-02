@@ -13,6 +13,8 @@ Connect to backend and get stream information
 * You need the Android SDK -- [View details here](http://developer.android.com/sdk/index.html)
 * You need [Ant](http://ant.apache.org/)
 
+***
+
  1. `npm install -g phonegap cordova `
  2. `npm install`
  3. `grunt init`
