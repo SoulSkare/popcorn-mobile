@@ -3,7 +3,7 @@
 
   var streaming = false;
 
-  var streamurl = '192.168.137.1'; //change to the ip your back-end is running on
+  var streamurl = 'localhost'; //change to the ip your back-end is running on
 
   var watchState = function (stateModel) {
 
