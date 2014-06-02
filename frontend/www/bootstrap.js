@@ -13,15 +13,14 @@
 
         if (!emulated) {
             if (checkConnection() != Connection.NONE ) {
-                initOptions.updateSite = initOptions.updateSite +'/'+ device.platform.toLowerCase();
+                initOptions.updateSite = initOptions.updateSite + device.platform.toLowerCase();
                 checkUpdate();
             }
         }
 
         // start app
         App.start();
-
-        $.mobile.loading( 'show', { theme: "b", text: "Unable to install latets update. Please visit http://popcorntime.io ", textonly: true, textVisible: true});
+        
     }
     
 })(window.App);

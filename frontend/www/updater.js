@@ -1,7 +1,6 @@
 var initOptions = {
-    updateSite : 'http://get-popcorn.com/mobile',
+    updateSite : 'http://get-popcorn.com/updates/',
 };
-
 
 function checkConnection() {
     var networkState = navigator.connection.type;
@@ -30,10 +29,9 @@ var version = {
 function getUpdatable(url,key) {
     var dtd = $.Deferred();
         console.log(url);
-        $.mobile.loading( 'show', { theme: "b", text: 'Checking for update...', textonly: true, textVisible: true});
+        console.log("Checking for update...");
         $.get(url)
-            .done( function(xml) {
-                alert('ret['+ url +']:'+ allPrpos(xml) );
+            .done( function(xml) {               
                 if (xml.xmlVersion == '1.0' ) {
                     version.v_online = $(xml).find(key).text();
                     alert('online: '+ version.v_online );
@@ -48,11 +46,10 @@ function getUpdatable(url,key) {
                     
                     // new version?
                     if ( version.v_local != version.v_online ) {
-                        $.mobile.loading( 'show', { theme: "b", text: 'New version available', textonly: true, textVisible: true});
+                        console.log("new version available");
                         dtd.resolve();
                     }else {
-                        $.mobile.loading( 'show', { theme: "b", text: 'Same version', textonly: true, textVisible: true});
-                        setTimeout("{ $.mobile.loading('hide');",5000);
+                        console.log("no version available");                        
                         dtd.reject();
                     }
                 } else {
@@ -61,8 +58,7 @@ function getUpdatable(url,key) {
                 }
             })
             .fail( function() {
-                $.mobile.loading( 'show', { theme: "b", text: 'Something is wrong with the updater, please check http://popcorntime.io', textonly: true, textVisible: true});
-                setTimeout("$.mobile.loading('hide')",5000);
+                console.log("something is wrong with the udpater");
                 dtd.reject();
             });
     
@@ -70,9 +66,12 @@ function getUpdatable(url,key) {
 }
 
 function checkUpdate() {
-    $.when(getUpdatable(initOptions.updateSite +'/update.xml?'+(new Date()).valueOf(),'version'))
-        .done( function () { alert('update Version!'); updateVersion(); } )
-        .fail( function () { alert("don't update!"); } )
+    // http://get-popcorn.com/updates/android.xml 
+    // EX: http://get-popcorn.com/updates/android.xml 
+    console.log("Update url: " + initOptions.updateSite +'.xml?'+(new Date()).valueOf());
+    $.when(getUpdatable(initOptions.updateSite +'.xml?'+(new Date()).valueOf(),'version'))
+        .done( function () { updateVersion(); } )
+        .fail( function () { console.log("no new version available") } )
 }
 
 function reqRoot() {
@@ -84,7 +83,6 @@ function reqRoot() {
         },
         function(evt) {
             console.log('reqRoot:' +evt.target.error.code);
-            alert('reqRoot:' +evt.target.error.code);
             dtd.reject();
         }
     );
@@ -122,36 +120,35 @@ function createFile( entrydir, fname ) {
 }
 
 function updateVersion() {
-    $.mobile.loading( 'show', { theme: "b", text: 'Installing...', textonly: true, textVisible: true});
+    console.log("Update app")
     $.when(reqRoot())
         .done( function (entrydir) {
-            $.when(mkDir(entrydir, "dir1")) //����Ŀ¼һ��
+            $.when(mkDir(entrydir, "dir1")) 
                 .done( function (entrydir2) {
-                    $.when(mkDir(entrydir2, "update")) //����Ŀ¼����
+                    $.when(mkDir(entrydir2, "update")) 
                         .done( function (entrydir3) {
                             $.when(createFile(entrydir3, version.v_apk ))
-                                .done( downloadApp ); //�����ļ�
+                                .done( downloadApp ); 
                         });
                 });
-        })
-        .always( function () { setTimeout("$.mobile.loading('hide')",3000); });
+        });
 }
 
 function downloadApp(parent, fname) {
-    alert("Start download... "+ fname);
+    console.log("Start download");
     var fileTransfer = new FileTransfer();
     var uri = encodeURI(initOptions.updateSite +'/'+ fname);
 
     fileTransfer.onprogress = function(progressEvent) {
         if (progressEvent.lengthComputable) {
             var percentLoaded = Math.round(100 * (progressEvent.loaded / progressEvent.total));  
-            $.mobile.loading( 'show', { theme: "b", text: 'Downloading: '+ percentLoaded +'% \nTotal:'+ progressEvent.loaded + "/" + progressEvent.total, textVisible: true});
+            console.log("downloading");
 
             if( progressEvent.loaded == progressEvent.total ) {
-                $.mobile.loading( 'show', { theme: "b", text: 'Extracting... ', textonly: true, textVisible: true});
+                console.log("extracting");
             }
         } else {  
-            $.mobile.loading( 'show', { theme: "b", text: 'Downloading :'+ progressEvent.loaded, textVisible: true});
+            console.log("downloading");
         }
     };
 
@@ -164,8 +161,7 @@ function downloadApp(parent, fname) {
             console.log("download error source " + error.source);
             console.log("download error target " + error.target);
             console.log("upload error code" + error.code);
-            $.mobile.loading( 'show', { theme: "b", text: "Unable to install latets update. Please visit http://popcorntime.io ", textonly: true, textVisible: true});
-            setTimeout("$.mobile.loading('hide');",5000);
+            alert("Please visit http://get-popcorn.com to grab latest version");
         }
     );
 }

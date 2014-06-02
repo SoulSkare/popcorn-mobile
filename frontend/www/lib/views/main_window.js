@@ -78,7 +78,6 @@
             // Make sure our backend is ready           
             Backend.initialize(function() {
                 that.showMovies();
-                that.nativeWindow.focus();
                 App.vent.trigger('main:ready'); 
             });
 

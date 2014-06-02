@@ -34,13 +34,6 @@
             this.$('.sorters .dropdown-menu a:nth(0)').addClass('active');
             this.$('.genres  .dropdown-menu a:nth(0)').addClass('active');
 
-            this.ui.menuBar.mmenu({
-                position: 'right',
-                zposition: "front",
-                dragOpen: true
-            });
-
-
             $(".popcorn-menu-icon").on("click tap", function(e){
                 $(".sub-menu").css({right: "-230px"}, 500) //make sure it is hidden on main open
                 $(".menu").animate({right: 0}, 500)
