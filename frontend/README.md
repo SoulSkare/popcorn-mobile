@@ -12,9 +12,10 @@ Connect to backend and get stream information
 
 You need the Android SDK -- [View details here](http://developer.android.com/sdk/index.html)
 
- 1. `npm install`
- 2. `grunt init`
- 3. `grunt serve` (web) or `grunt run` (android)
+ 1. `npm install -g phonegap cordova `
+ 2. `npm install`
+ 3. `grunt init`
+ 4. `grunt serve` (web) or `grunt run` (android)
 
 If you use `grunt serve,` you can visit `http://localhost:3000` in your browser. But be carrefull, this may render differently in the mobile. We suggest you to get a real devices :)
 
