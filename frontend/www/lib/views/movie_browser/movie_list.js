@@ -1,7 +1,7 @@
 (function(App) {
     'use strict';
 
-    var SCROLL_MORE = 200;
+    var SCROLL_MORE = 300;
 
     var ErrorView = Backbone.Marionette.ItemView.extend({
         template: '#movie-error-tpl',
@@ -20,8 +20,7 @@
         itemViewContainer: '.movies',
 
         events: {
-            'scrollstart': 'onScroll',
-            'keydown': 'onScroll'
+            'scrollstart': 'onScroll'
         },
 
         isEmpty: function() {
@@ -36,7 +35,6 @@
             }
         },
 
-
         ui: {
             spinner: '.spinner'
         },
@@ -45,20 +43,7 @@
             var _this = this;
             this.listenTo(this.collection, 'loading', this.onLoading);
             this.listenTo(this.collection, 'loaded', this.onLoaded);
-
-            Mousetrap.bind('up', function (e) { _this.moveUp(e); _this.keyNav(e);});
-
-            Mousetrap.bind('down', function (e) { _this.moveDown(e); _this.keyNav(e);});
-
-            Mousetrap.bind('left', function (e) { _this.moveLeft(e); _this.keyNav(e);});
-
-            Mousetrap.bind('right', function (e) { _this.moveRight(e); _this.keyNav(e);});
-
-            Mousetrap.bind('enter', _this.selectItem);
-
         },
-
-
 
         onShow: function() {
             if(this.collection.state === 'loading') {
@@ -75,38 +60,8 @@
 			console.timeEnd('App startup time');
             var self = this;
             this.checkEmpty();
-
-            $('#load-more-item').remove();
-
-            // we add a load more
-            if(this.collection.hasMore && this.collection.filter.keywords === null && this.collection.state !== 'error') {
-                $('.movies').append('<div id=\'load-more-item\' class=\'load-more\'><span class=\'status-loadmore\'>' + i18n.__('Load More') + '</span><div id=\'loading-more-animi\' class=\'loading-container\'><div class=\'ball\'></div><div class=\'ball1\'></div></div></div>');
-                
-                $('#load-more-item').click(function(){
-                    $('#load-more-item').off('click');
-                    self.collection.fetchMore();
-                });
-
-                $('#loading-more-animi').hide();
-                $('.status-loadmore').show();
-            }
-
             this.ui.spinner.hide();
-			
-            $('.filter-bar').on('mousedown', function(e){
-                if(e.target.localName !== 'div') {
-                    return;
-                }
-                _.defer(function(){
-                    self.$('.movies:first').focus();
-                    self.$('.movie-item').eq(0).addClass('selected');
-                });
-            });
-            $('.movies').attr('tabindex','1');
-            _.defer(function(){
-                self.$('.movies:first').focus();
-                self.$('.movie-item').eq(0).addClass('selected');
-            });
+
         },
 
         onScroll: function() {
@@ -121,69 +76,6 @@
                 totalHeight - currentPosition < SCROLL_MORE) {
                 this.collection.fetchMore();
             }
-        },
-
-        selectItem: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $('.movie-item.selected .cover').trigger('click');
-        },
-
-        moveUp: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var index = $('.movie-item.selected').index();
-            var numInRow = calculateMoviesInThisRow($('.movie-item.selected'));
-            if(index - numInRow < 0) {
-                return;
-            }
-            $('.movie-item.selected').removeClass('selected');
-            $('.movies .movie-item').eq(index - numInRow).addClass('selected');
-            $('.movie-item.selected')[0].scrollIntoView(false);
-        },
-
-        moveDown: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var index = $('.movie-item.selected').index();
-            var numInRow = calculateMoviesInThisRow($('.movie-item.selected'));
-            $('.movie-item.selected').removeClass('selected');
-            $('.movies .movie-item').eq(index + numInRow).addClass('selected');
-            $('.movie-item.selected')[0].scrollIntoView(false);
-        },
-
-        moveLeft: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var index = $('.movie-item.selected').index();
-            if(index === 0) {
-                return;
-            }
-            if(index === -1) {
-                $('.movies .movie-item').eq(0).addClass('selected');
-            }
-            $('.movie-item.selected').removeClass('selected');
-            $('.movies .movie-item').eq(--index).addClass('selected');
-            $('.movie-item.selected')[0].scrollIntoView(false);
-        },
-
-        moveRight: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var index = $('.movie-item.selected').index();
-            $('.movie-item.selected').removeClass('selected');
-            $('.movies .movie-item').eq(++index).addClass('selected');
-            $('.movie-item.selected')[0].scrollIntoView(false);
-        },
-
-        keyNav: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            clearTimeout($('#content').data('keyNavTimer'));
-            $('#content').addClass('key-nav');
-            $('#content').data('key-nav-timer', setTimeout(function() {
-                $('#content').removeClass('key-nav');
-            }, 30000));
         }
     });
 

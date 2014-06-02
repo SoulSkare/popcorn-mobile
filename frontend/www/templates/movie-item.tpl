@@ -1,4 +1,5 @@
-
+    <!-- TODO: need something more sexy -->
+    <div class="view_movie" style="display:block;height:81px">
 		<p class="title" title="<%= title %>"><%= title %></p>
 		<p class="year"><%= year %></p>
 		<% if(Settings.moviesShowQuality){ %>
@@ -7,6 +8,6 @@
 			</p>
 		<% } %>
 
-		            <img src="images/icons/blue-arrow.png" class="popcorn-movie-open-icon"/>
+		   <img src="images/icons/blue-arrow.png" class="popcorn-movie-open-icon"/>
             <div class="popcorn-movie-seperator"></div>
-
+    </div>

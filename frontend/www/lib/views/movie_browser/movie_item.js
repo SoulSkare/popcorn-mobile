@@ -14,8 +14,7 @@
         },
 
         events: {
-            'click .actions-favorites': 'toggleFavorite',
-            'click .popcorn-movie-open-icon': 'showDetail'
+            'tap .view_movie': 'showDetail'
         },
 
         onShow: function() {
@@ -56,57 +55,6 @@
 
             App.vent.trigger('movie:showDetail', this.model);
 
-        },
-
-        toggleFavorite: function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            var that = this;
-            if (this.model.get('bookmarked') === true) {
-                Database.deleteBookmark(this.model.get('imdb'), function(err, data) {
-                    console.log('Bookmark deleted');
-                    that.model.set('bookmarked', false);
-
-                        that.ui.bookmarkIcon.removeClass('selected');
-
-                    // we'll make sure we dont have a cached movie
-                    Database.deleteMovie(that.model.get('imdb'),function(err, data) {});
-                });
-            } else {
-
-                // we need to have this movie cached
-                // for bookmarking
-                var movie = {
-                    imdb: this.model.get('imdb'),
-                    image: this.model.get('image'),
-                    torrents: this.model.get('torrents'),
-                    title: this.model.get('title'),
-                    synopsis: this.model.get('synopsis'),
-                    runtime: this.model.get('runtime'),
-                    year: this.model.get('year'),
-                    health: this.model.get('health'),
-                    subtitle: this.model.get('subtitle'),
-                    backdrop: this.model.get('backdrop'),
-                    rating: this.model.get('MovieRating'),
-                    trailer: this.model.get('trailer'),
-                };
-
-                Database.addMovie(movie, function(error,result) {
-                    Database.addBookmark(that.model.get('imdb'), 'movie', function(err, data) {
-                        console.log('Bookmark added');
-
-
-
-                        that.ui.bookmarkIcon.addClass('selected');
-
-
-                        that.model.set('bookmarked', true);
-
-
-                    });
-                });
-
-            }
         }
 
     });

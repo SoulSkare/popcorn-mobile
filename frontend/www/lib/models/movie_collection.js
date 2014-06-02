@@ -27,7 +27,6 @@
                 return;
             }
 
-
             $.mobile.loading( 'show', {
                 text: 'Loading...',
                 textVisible: true,
