@@ -20,7 +20,7 @@
         itemViewContainer: '.movies',
 
         events: {
-            'scrollstart': 'onScroll'
+            'touchmove': 'onScroll'
         },
 
         isEmpty: function() {
