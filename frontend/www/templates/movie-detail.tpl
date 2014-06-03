@@ -38,8 +38,8 @@
 		</div>
 
 		<div class="movie-backdrop-overlay"></div>
-		<!--<div class="cover-detail-overlay"><div class="cover-detail-favorites"></div></div>
-		<img class="movie-cover-image" src="<%= image %>" /> -->
+		<!--<div class="cover-detail-overlay"><div class="cover-detail-favorites"></div></div> -->
+		<img class="movie-cover-image" src="<%= image %>" />
 		<div class="sperator-movie"></div>
 		<div class="movie-meta-title"><%= title %></div>
 		<div class="movie-quick-info">
@@ -47,8 +47,6 @@
 			<div class="movie-dot"></div>
 			<% if (synopsis.length > 528) { var synopsis = synopsis.substring(0, 528) + "..."; } %>
 			<div class="movie-meta-details"><%= runtime %> min</div>
-			<div class="movie-dot"></div>
-			<div data-toggle="tooltip" data-placement="top" title="<%=i18n.__("Open IMDb page") %>" class="movie-imdb-link"></div>
 			<div class="movie-dot"></div>
 			<% var p_rating = Math.round(rating) / 2; %>
 			<div data-toggle="tooltip" data-placement="right" title="<%= rating %>/10" class="star-container">
