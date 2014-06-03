@@ -2,6 +2,7 @@
   "use strict";
 
   var streaming = false;
+  var torrentInfo = false;
 
   var streamurl = 'localhost'; //change to the ip your back-end is running on
 
@@ -10,8 +11,8 @@
     if (streaming) {
 
       $.get('http://'+streamurl+':8080/api/streamer', function (data, status, jqXHR) {
-        console.log(data);
         var state = data.state;
+        data.streamInfo.title = torrentInfo.title;
         var streamInfo = new App.Model.StreamInfo(data.streamInfo);
 
         if (state == "ready") {
@@ -22,7 +23,6 @@
 
         stateModel.set('state', state);
         stateModel.set('streamInfo', streamInfo);
-
         if (state != 'ready') {
           //console.log("_.delay(watchState, 1000, stateModel);");
           _.delay(watchState, 1000, stateModel);
@@ -63,16 +63,12 @@
     start: function (model) {
       streaming = true;
 
-
       var stateModel = new Backbone.Model({state: 'connecting', backdrop: model.get('backdrop')});
       App.vent.trigger('stream:started', stateModel);
 
-      var torrentInfo = {
-        subtitle: model.get('subtitle'),
+      torrentInfo = {
         title: model.get('title')
       };
-
-      console.log(model);
 
       var raw = model.get('raw');
 
@@ -82,12 +78,11 @@
         torrentInfo.url = model.get('torrent');
       }
 
-      // Same as above
-
       handleTorrent(torrentInfo, stateModel);
     },
 
     stop: function () {
+      torrentInfo = false;
       $.ajax({
         url: 'http://'+streamurl+':8080/api/streamer',
         method: 'DELETE',
