@@ -33,8 +33,7 @@
             // Stream events
             App.vent.on('stream:started', _.bind(this.streamStarted, this));
             App.vent.on('stream:ready', _.bind(this.showPlayer, this));
-            App.vent.on('player:close', _.bind(this.showMovies, this));
-            App.vent.on('player:close', _.bind(this.Player.close, this.Player));
+            App.vent.on('player:close', _.bind(this.closePlayer, this));
         },
 
         onShow: function() {
@@ -53,6 +52,7 @@
             });
         },
 
+
         showMovies: function(e) {
             this.MovieDetail.close();
             this.Content.show(new App.View.MovieBrowser());
@@ -70,15 +70,7 @@
 
 
         streamStarted: function(stateModel) {
-
-            // People wanted to keep the active 
-            // modal (tvshow/movie) detail open when
-            // the streaming start.
-            // 
-            // this.MovieDetail.close();
-            // 
-            // uncomment previous line to close it
-
+            this.MovieDetail.close();
             this.Player.show(new App.View.Loading({
                 model: stateModel
             }));
@@ -93,6 +85,11 @@
                 this.MovieDetail.$el.hide();
             }
         },
+
+        closePlayer: function(e) {
+            this.Player.close();
+            this.Content.show(new App.View.MovieBrowser());
+        },        
 
     });
 
