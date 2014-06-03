@@ -11,11 +11,7 @@
             Content: '#content',
             MovieDetail: '#movie-detail',
             Player: '#player',
-            Settings: '#settings-container',
             InitModal: '#initializing',
-            Disclaimer: '#disclaimer-container',
-            About: '#about-container',
-            Help: '#help-container'
         },
 
         events: {
@@ -55,15 +51,9 @@
                 that.showMovies();
                 App.vent.trigger('main:ready'); 
             });
-
-
-           
-
-
         },
 
         showMovies: function(e) {
-            this.Settings.close();
             this.MovieDetail.close();
 
             this.Content.show(new App.View.MovieBrowser());
