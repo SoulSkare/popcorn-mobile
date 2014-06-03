@@ -55,7 +55,6 @@
 
         showMovies: function(e) {
             this.MovieDetail.close();
-
             this.Content.show(new App.View.MovieBrowser());
         },
 
