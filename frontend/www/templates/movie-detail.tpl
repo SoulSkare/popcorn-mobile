@@ -6,6 +6,37 @@
  		if(typeof runtime === 'undefined'){ runtime = 'N/A'; }; 
  	%>
 		<div id="movie-backdrop" data-bgr="<%= backdrop %>" class="movie-backdrop"></div>
+
+		<div class="movie-controlls-container">
+
+			<!-- <div class="movie-btn-watch"><div class="movie-watch-now"><%= i18n.__("Watch Now") %></div></div> -->
+
+			<div class="movie-btn-watch"><div class="movie-watch-now"><div class="play-button"></div></div></div>
+
+			<div class="movie-quality-container">
+				<% if (torrents["720p"] !== undefined && torrents["1080p"] !== undefined) { %>
+					<div class="q720">720</div>
+					<div class="q1080">1080</div>
+					<div class="quality switch white">
+						<input type="radio" name="switch" id="switch-hd-off" >
+						<input type="radio" name="switch" id="switch-hd-on" checked >
+						<span class="toggle"></span>
+					</div>
+				<% } else { %>
+					<div class="q720"><% if (torrents["720p"] !== undefined) { %>720p<% }else { %><% if (torrents["1080p"] !== undefined) { %>1080p<% }} %> </div>
+				<% } %>
+			</div>
+
+			<!--<div class="sub-dropdown"><%= i18n.__("Subtitles") %><div id="toggle-sub-dropdown" class="flag toggle NA selected-lang"></div>
+			<div id="toggle-sub-dropdown-arrow" class="sub-dropdown-arrow-down"></div> <div class="sub-dropdown-arrow-up"></div> </div>
+
+			<div class="flag-container">
+				<% for(var lang in subtitle){ %>
+					<div class="sub-flag-icon flag <%= lang %>" data-lang="<%= lang %>" title="<%= App.Localization.langcodes[lang].nativeName %>"></div>
+				<% } %>
+			</div>-->
+		</div>
+
 		<div class="movie-backdrop-overlay"></div>
 		<!--<div class="cover-detail-overlay"><div class="cover-detail-favorites"></div></div>
 		<img class="movie-cover-image" src="<%= image %>" /> -->
@@ -41,36 +72,5 @@
 
 		<div class="movie-detail-close"></div>
 
-		<div class="movie-controlls-container">
-
-			<div class="movie-btn-watch"><div class="movie-watch-now"><%= i18n.__("Watch Now") %></div></div>
-
-			<div class="movie-btn-watch-trailer">
-				<div class="movie-watch-now"><%= i18n.__("Watch Trailer") %></div>
-			</div>
-
-			<div class="movie-quality-container">
-				<% if (torrents["720p"] !== undefined && torrents["1080p"] !== undefined) { %>
-					<div class="q720">720</div>
-					<div class="q1080">1080</div>
-					<div class="quality switch white">
-						<input type="radio" name="switch" id="switch-hd-off" >
-						<input type="radio" name="switch" id="switch-hd-on" checked >
-						<span class="toggle"></span>
-					</div>
-				<% } else { %>
-					<div class="q720"><% if (torrents["720p"] !== undefined) { %>720p<% }else { %><% if (torrents["1080p"] !== undefined) { %>1080p<% }} %> </div>
-				<% } %>
-			</div>
-
-			<!--<div class="sub-dropdown"><%= i18n.__("Subtitles") %><div id="toggle-sub-dropdown" class="flag toggle NA selected-lang"></div>
-			<div id="toggle-sub-dropdown-arrow" class="sub-dropdown-arrow-down"></div> <div class="sub-dropdown-arrow-up"></div> </div>
-
-			<div class="flag-container">
-				<% for(var lang in subtitle){ %>
-					<div class="sub-flag-icon flag <%= lang %>" data-lang="<%= lang %>" title="<%= App.Localization.langcodes[lang].nativeName %>"></div>
-				<% } %>
-			</div>-->
-		</div>
 	</div>
 </div>

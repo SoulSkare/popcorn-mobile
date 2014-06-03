@@ -1,5 +1,5 @@
     <!-- TODO: need something more sexy -->
-    <div class="view_movie" style="display:block;height:81px">
+    <div class="view_movie" style="display:block;height:69px">
 		<p class="title" title="<%= title %>"><%= title %></p>
 		<p class="year"><%= year %></p>
 		<% if(Settings.moviesShowQuality){ %>
