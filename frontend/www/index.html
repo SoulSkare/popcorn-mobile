@@ -3,7 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap-theme.css">	
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap-theme.css">
+
+	<link rel="stylesheet" type="text/css" href="vendor/ratchet2/css/ratchet.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/ratchet2/css/ratchet-theme-android.min.css">
 
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<link rel="stylesheet" type="text/css" href="css/video-js.css">
@@ -24,12 +27,15 @@
 	<script id="player-tpl" src="templates/player.tpl" type="text/x-template"></script>
 	<script id="loading-tpl" src="templates/loading.tpl" type="text/x-template"></script>
 	<script id="initializing-tpl" src="templates/initializing.tpl" type="text/x-template"></script>
-	
-	<!-- cordova used on mobile only-->
-    <script src="cordova.js"></script>
-	
+
+	<!-- Ratchet -->
+	<script src="vendor/ratchet2/js/ratchet.min.js"></script>
+
+	<!-- Cordova used on mobile only -->
+	<script src="cordova.js"></script>
+
 	<!-- 3rd party Dependencies -->
-	<script src="vendor/jquery/jquery.js"></script>
+	<script src="vendor/jquery/dist/jquery.js"></script>
 	<script src="vendor/underscore/underscore.js"></script>
 	<script src="vendor/backbone/backbone.js"></script>
 	<script src="vendor/backbone.wreqr/lib/backbone.wreqr.js"></script>
@@ -37,15 +43,16 @@
 	<script src="vendor/marionette/lib/backbone.marionette.js"></script>
 	<script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="vendor/mousetrap/mousetrap.min.js"></script>
-    <script src="vendor/q/q.js"></script>
-    <script src="vendor/moment/moment.js"></script>
-    <script src="vendor/querystring/querystring.js"></script>
-    <script src="vendor/uri.js"></script>
+	<script src="vendor/q/q.js"></script>
+	<script src="vendor/moment/moment.js"></script>
+	<script src="vendor/querystring/querystring.js"></script>
+	<script src="vendor/uri.js"></script>
 	<script src="vendor/videojs/dist/video-js/video.dev.js"></script>
 
 	<!-- Other dependencies -->
 	<script src="vendor/videojshooks.js"></script>
 	<script src="vendor/videojsplugins.js"></script>
+
 	<!-- dependencie to menu -->
 	<script src="vendor/dragwindow.js"></script>
 
@@ -84,7 +91,7 @@
 	<script src="lib/views/movie_browser/filter_bar.js"></script>
 	<script src="lib/views/movie_browser/movie_item.js"></script>
 	<script src="lib/views/movie_browser/movie_list.js"></script>
-	
+
 	<script src="bootstrap.js"></script>
 </body>
 </html>
