@@ -39,23 +39,32 @@ var AdvSettings = {
 
     checkApiEndpoint: function (api, callback) {
 
-        window.plugins.sslCertificateChecker.check(
-              successCallback,
-              errorCallback,
-              Settings[api.original],
-              api.fingerprint);
+        try {
 
-        function successCallback(message) {
+            window.plugins.sslCertificateChecker.check(
+                  successCallback,
+                  errorCallback,
+                  Settings[api.original],
+                  api.fingerprint);
+
+            function successCallback(message) {
+                alert(message);
+                callback();
+            }
+
+            function errorCallback(message) {
+                alert(message);
+                Settings[api.original] = Settings[api.mirror];
+                callback();
+            }
+
+        } catch(err) {
+            alert(err);
+            Settings[api.original] = Settings[api.mirror];
             callback();
         }
 
-        function errorCallback(message) {
-            Settings[apiCheck.original] = Settings[apiCheck.mirror];
-            callback();
-        }
 
     }
 
 };
-
-if(typeof exports != "undefined") exports.Settings = Settings;
