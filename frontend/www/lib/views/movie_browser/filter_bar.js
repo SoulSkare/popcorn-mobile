@@ -36,7 +36,15 @@
             })
 
             that.$(".genre-sub-menu").on("click tap", function(e){
+                that.$(".menu-sort-by").hide()
                 that.$(".sub-menu").animate({right: 0}, 500)
+                that.$(".menu-genre ").show()
+            })
+
+            that.$(".genre-sort-by").on("click tap", function(e){
+                that.$(".menu-genre ").hide()
+                that.$(".sub-menu").animate({right: 0}, 500)
+                that.$(".menu-sort-by").show()
             })
 
             that.$(".menu").on("click tap", function(e){

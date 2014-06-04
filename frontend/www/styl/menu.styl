@@ -14,7 +14,6 @@
 	background: #17181B;
 	right: -70%;
 	width: 70%;
-	min-width: 270px;
 	overflow: auto;
 	top: 0;
 	box-shadow: 6px 0px 14px 6px #000;
@@ -62,7 +61,6 @@
 	background: #0C0C0C;
 	right: -60%;
 	width: 60%;
-	min-width: 230px;
 	overflow: auto;
 	top: 0;
 	box-shadow: 6px 0px 14px 6px #000;
@@ -89,6 +87,37 @@
 	transition: all 0.3s;
 	list-style: none;
 	color: #FFF;
+	font-family: 'Roboto', sans-serif;
+	font-size: 24px;
+	display: none;
+	font-weight: 400;
+	margin: 45px 0 10px 0;
+
+
+	li 
+		padding: 7px;
+		border-left: 5px solid rgba(0, 0, 0, 0);
+		transition: all 0.3s;
+		width: 100%;
+
+
+	li:hover 
+		background: rgba(0, 0, 0, 0.27);
+		width: 100%;
+		border-left: 5px solid rgba(66, 66, 66, 0.64);
+
+
+	li.selected
+		border-left: 5px solid #7C7C7C !important;
+		transition: all 0.3s;
+
+.menu-sort-by 
+	padding: 10px 30px;
+	border-left: 5px solid rgba(0, 0, 0, 0);
+	transition: all 0.3s;
+	list-style: none;
+	color: #FFF;
+	display: none;
 	font-family: 'Roboto', sans-serif;
 	font-size: 24px;
 	font-weight: 400;
