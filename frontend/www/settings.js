@@ -59,7 +59,7 @@ var AdvSettings = {
             }
 
         } catch(err) {
-            alert(err);
+            //alert(err);
             Settings[api.original] = Settings[api.mirror];
             callback();
         }
