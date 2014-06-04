@@ -5,9 +5,7 @@
         className: 'filter-bar',
         ui: {
             searchForm: '.search form',
-            search:     '.search input',
-
-            menuBar:  '#nav-menu'
+            search:     '.search input'
         },
         events: {
             'hover  @ui.search': 'focus',
@@ -26,7 +24,7 @@
             var that = this;
 
             // MENU
-            that.$(".popcorn-menu-icon").on("click tap", function(e){
+            that.$(".filter-bar-menu").on("click tap", function(e){
                 that.$(".menu").animate({right: 0}, 500)
                 that.$(".menu-overlay").css('display', 'block')
             })

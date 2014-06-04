@@ -1,8 +1,8 @@
-<div class="header-container">
-    <div class="popcorn-logo"></div>
-    <div class="popcorn-menu-icon"></div>
-    <div class="popcorn-search-icon"></div>
-</div>
+<header class="bar bar-nav">
+    <a class="icon icon-search pull-right" href="#"></a>
+    <a class="icon icon-bars pull-right filter-bar-menu" href="#"></a>
+    <h1 class="title">Popcorn Time</h1>
+</header>
 
 <div class="menu-overlay"></div>
 <div class="menu">
