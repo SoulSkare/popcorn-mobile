@@ -14,6 +14,7 @@ module.exports = function(grunt) {
 		'exec:plugins_device',
 		'exec:plugins_network',
 		'exec:plugins_update',
+		'exec:plugins_ssl',
 		'exec:prepare',
 		'exec:build'
 	]);
@@ -74,7 +75,8 @@ module.exports = function(grunt) {
 			},			
 			plugins_device: 'cordova plugin add org.apache.cordova.device',
 			plugins_network: 'cordova plugin add org.apache.cordova.network-information',
-			plugins_update: 'cordova plugin add https://github.com/popcorn-official/codova-update-plugin.git'
+			plugins_update: 'cordova plugin add https://github.com/popcorn-official/codova-update-plugin.git',
+			plugins_ssl: 'cordova plugin add https://github.com/phenomenz/codova-ssl-plugin.git'
 
         },
 
