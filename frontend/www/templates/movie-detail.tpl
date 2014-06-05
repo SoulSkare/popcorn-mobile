@@ -1,4 +1,14 @@
+<header class="bar bar-nav">
 
+
+<button id="back" class="btn btn-link btn-nav pull-left">
+    <span class="icon icon-left-nav"></span>
+    Back
+  </button>
+  
+  <h1 class="title">Popcorn Time</h1>
+
+</header>
 	<%  
 		if(typeof backdrop === 'undefined'){ backdrop = ''; }; 
 		if(typeof synopsis === 'undefined'){ synopsis = 'Synopsis not available.'; }; 

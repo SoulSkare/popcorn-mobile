@@ -13,7 +13,7 @@
         events: {
             'click .movie-btn-watch': 'startStreaming',
             'click .movie-btn-watch-trailer': 'playTrailer',
-            'click .movie-detail-close': 'closeDetails',
+            'click #close-movie-detail': 'closeDetails',
             'click #switch-hd-on': 'enableHD',
             'click #switch-hd-off': 'disableHD',
             'click #toggle-sub-dropdown': 'toggleDropdown',
@@ -28,7 +28,7 @@
 
             // TODO: use the default in settings
             this.subtitle_selected = false;
-
+            $(".movie-list-header").hide()
             win.info('Show movie detail');
 
             var torrents = this.model.get('torrents');
