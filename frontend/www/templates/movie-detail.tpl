@@ -32,7 +32,7 @@
             <div class="movie-details-container">
                 <div class="movie-meta-details"><%= year %></div>
                 <div class="movie-meta-dot"></div>
-                <div class="movie-meta-details"><%= runtime %></div>
+                <div class="movie-meta-details"><%= runtime %> min</div>
 
                 <div class="movie-meta-dot"></div>
  <% var p_rating = Math.round(rating) / 2; %>
