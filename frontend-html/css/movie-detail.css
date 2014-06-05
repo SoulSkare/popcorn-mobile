@@ -26,7 +26,7 @@
     padding-left: 3%;
 }
 .movie-meta-title {
-    top: 10%;
+    margin-top: 1%;
     color: #fff;
     font-family: 'Open Sans Semibold';
     -webkit-font-smoothing: antialiased;
@@ -43,7 +43,8 @@
     overflow: hidden;
 }
 .movie-details-container {
-    margin-top: 2%;
+    margin-top: 1%;
+    height: 15%;
 }
 .movie-meta-details {
     opacity: 1;
@@ -58,6 +59,7 @@
     -webkit-backface-visibility: hidden;
 }
 .movie-meta-dot {
+    top:5px;
     margin-left: 15px;
     margin-right: 15px;
     position: relative;
