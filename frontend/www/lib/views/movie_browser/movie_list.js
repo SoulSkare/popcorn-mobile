@@ -58,18 +58,22 @@
             $('#loading-more-animi').show();
         },
 
+
         onLoaded: function() {
 			console.timeEnd('App startup time');
             var self = this;
             this.checkEmpty();
             this.ui.spinner.hide();
+            $(window).on('resize', this.onThisResize);
+            this.onThisResize();
 
+        },
+        onThisResize: function() {
             var headerheight = $( "#movie-list-header" ).height();
             $(".segmented-control").css("margin-top", headerheight+"px");
             $(".movies").css("margin-top", headerheight +35 +"px");
             $(".segmented-control").show();
-        },
-
+          },
         onScroll: function() {
             if(!this.collection.hasMore) {
                 return;
