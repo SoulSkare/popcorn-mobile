@@ -70,7 +70,8 @@
 
         onThisResize: function() {
  
-            $('.cover-detail-overlay').height( $('.movie-cover-image').height() );
+
+            $(".movie-detail-view").css("margin-top", $('.bar-nav').height()+"px");
         },
 
         onClose: function() {
