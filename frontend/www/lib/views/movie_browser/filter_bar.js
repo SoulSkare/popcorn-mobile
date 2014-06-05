@@ -114,7 +114,7 @@
     });
 
     App.View.FilterBarMovie = App.View.FilterBar.extend({
-        template: '#filter-bar-movie-tpl',
+        template: '#movie-list-header-tpl',
         type: 'movies',
     });
 

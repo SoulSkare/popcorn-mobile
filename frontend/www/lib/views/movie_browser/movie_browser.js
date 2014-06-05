@@ -16,7 +16,7 @@
             'keypress': 'focusSearch',
         },*/
         regions: {
-            FilterBar: '.filter-bar-region',
+            FilterBar: '.movie-list-header',
             MovieList: '.movie-list-region'
         },
 
