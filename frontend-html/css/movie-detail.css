@@ -142,3 +142,22 @@ opacity: 1;
 background-repeat: no-repeat;
 -webkit-backface-visibility: hidden;
 }
+
+
+.movie-meta-overview {
+position: absolute;
+margin-left: 3%;
+margin-right: 3%;
+margin-top: 10px;
+color: #fff;
+font-family: 'Open Sans Semibold';
+-webkit-font-smoothing: antialiased;
+font-size: 14px;
+line-height: 22px;
+opacity: 1;
+height: 40%;
+-webkit-backface-visibility: hidden;
+overflow: auto;
+overflow-x: hidden;
+overflow-y: overlay;
+}
