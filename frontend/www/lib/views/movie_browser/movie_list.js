@@ -49,9 +49,11 @@
             if(this.collection.state === 'loading') {
                 this.onLoading();
             }
+
         },
 
         onLoading: function() {
+
             $('.status-loadmore').hide();
             $('#loading-more-animi').show();
         },
@@ -62,6 +64,10 @@
             this.checkEmpty();
             this.ui.spinner.hide();
 
+            var headerheight = $( "#movie-list-header" ).height();
+            $(".segmented-control").css("margin-top", headerheight+"px");
+            $(".movies").css("margin-top", headerheight +35 +"px");
+            $(".segmented-control").show();
         },
 
         onScroll: function() {
