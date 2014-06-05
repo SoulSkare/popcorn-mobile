@@ -28,7 +28,7 @@
 
             // TODO: use the default in settings
             this.subtitle_selected = false;
-            $(".movie-list-header").hide()
+            $(".movie-list-header").hide();
             win.info('Show movie detail');
 
             var torrents = this.model.get('torrents');
@@ -119,6 +119,7 @@
 
         closeDetails: function() {
             App.vent.trigger('movie:closeDetail');
+            $(".movie-list-header").show();
         },
 
         enableHD: function () {

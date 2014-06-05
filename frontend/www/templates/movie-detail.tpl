@@ -1,7 +1,7 @@
 <header class="bar bar-nav">
 
 
-<button id="back" class="btn btn-link btn-nav pull-left">
+<button id="close-movie-detail" class="btn btn-link btn-nav pull-left">
     <span class="icon icon-left-nav"></span>
     Back
   </button>
