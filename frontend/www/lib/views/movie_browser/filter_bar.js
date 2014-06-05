@@ -30,8 +30,8 @@
             })
 
             that.$(".menu-overlay").on("click tap", function(e){
-                that.$(".sub-menu").animate({right: "-230px"}, 500)
-                that.$(".menu").animate({right: "-270px"}, 500)
+                that.$(".sub-menu").animate({right: "-60%"}, 500)
+                that.$(".menu").animate({right: "-70%"}, 500)
                 that.$(".menu-overlay").css('display', 'none')
             })
 
@@ -49,7 +49,7 @@
 
             that.$(".menu").on("click tap", function(e){
                 if (that.$(".sub-menu").css("right") == "0px") {
-                    that.$(".sub-menu").animate({right: "-230px"}, 500)
+                    that.$(".sub-menu").animate({right: "-60%"}, 500)
                 }
             })
 
