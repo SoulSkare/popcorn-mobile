@@ -1,12 +1,13 @@
 #player .app-overlay
   z-index 20
   
-.app-overlay
+.movie-detail-view
   position absolute
   z-index 2
   width 100%
   height 100%
-  background-color rgba(9, 13, 18, 0.75)
+  background-color #121314
+  margin-top 7%
 
 .tooltip-inner
   max-width 200px
@@ -17,645 +18,163 @@
   background-color rgba(9, 13, 18, 0.75)
   border-radius 4px
 
-.cover-detail-overlay
-  position absolute
-  width 23%
-  border-radius 4px
-  float left
-  margin-right 20px
-  margin-left 7.1%
-  z-index 5
-  opacity 0
-  background rgba(23, 24, 27, 0.6)
-  transition opacity .25s ease
+
+.movie-backdrop
+  position relative
+  width 100%
+  height 40%
+  background-repeat no-repeat
+  background-position center
+  background-size cover
   -webkit-backface-visibility hidden
 
+
+
+
+
+.movie-meta-backround
+  height 25%
+  width 100%
+  min-height 64px
+  bottom 0
+  position absolute
+  padding-left 2%
+  background rgba(0, 0, 0, 0.6)
+
+.movie-meta-title
+  margin-top 1%
+  color #fff
+  font-family 'Open Sans Semibold'
+  -webkit-font-smoothing antialiased
+  font-size 28px
+  position relative
+  cursor default
+  z-index 3
+  max-width 75%
+  opacity 1
+  -webkit-backface-visibility hidden
+  text-shadow 0 0 5px #000
+  text-overflow ellipsis
+  white-space nowrap
+  overflow hidden
+
+.movie-details-container
+  margin-top 1%
+  height 15%
+
+.movie-meta-details
+  opacity 1
+  position relative
+  float left
+  color #fff
+  font-family 'Open Sans Bold'
+  -webkit-font-smoothing antialiased
+  font-size 11px
+  cursor default
+  z-index 2
+  -webkit-backface-visibility hidden
+
+.movie-meta-dot
+  top 5px
+  margin-left 15px
+  margin-right 15px
+  position relative
+  float left
+  width 3px
+  height 3px
+  border-radius 2px
+  background-clip padding-box
+  background-color #dbdbdd
+  cursor default
+  z-index 2
+  -webkit-backface-visibility hidden
+
+.movie-btn-watch
+  top 35%
+  position relative
+  z-index 3
+  margin auto
+  cursor pointer
+  width 60px
+  height 60px
+  border-radius 50px
+  background-clip padding-box
+  background-color #1f375f
+  padding 3px 0 0 18px
+  transition background-color 0.5s
+  opacity 0.9
+  .play-icon
+    width 0
+    height 0
+    margin-top 13px
+    margin-left 10px
+    margin-right auto
+    border-top 15px solid transparent
+    border-left 30px solid #fff
+    border-bottom 15px solid transparent
   &:hover
-    opacity: 1
-    
-.cover-detail-favorites
-  height: 20px
-  width: 25px
-  float: right
-  background-repeat: no-repeat
-  background-position: center
-  margin-top: 10px
-  margin-right: 7px
-  -webkit-transition: background-image 0.2s ease-in-out
-  background-image: url(../../images/icons/AddToFavorites.png)
-
-  &:hover
-    background-image: url(../../images/icons/favorites_hover.png)
-
-  &.selected
-    background-image: url(../../images/icons/favorites_marked.png)
-
-    &:hover
-      background-image: url(../../images/icons/AddToFavorites.png)
-
-.movie-detail
-    z-index 10
-    width 100%
-    height 100%
-    position fixed
-    -webkit-user-select none
-    opacity 1
-    overflow hidden
-    margin auto
-    left 0
-    right 0
-    top 50px
-    //max-width 940px
-    //max-height 430px
-    -webkit-backface-visibility hidden
+    background #225694
+  &:active
+    box-shadow inset 0 -1px 4px rgba(0,0,0,0.6)
+    background #2875e5
+    border solid 1px #2468cc
 
 .star-container
-  position: relative
-  opacity 1
+  position relative
   float left
-  margin-top: 18px
-  width: 80px
-  height: 16px
-  z-index: 2
+  height 16px
+  z-index 2
 
-
-.sperator-movie
-    height 70px
-    width 100%
-    position absolute
-    z-index 3
-    top 29%
-    background rgba(0, 0, 0, 0.6)
-
-    .detail-window
-      opacity 1
-
-.movie-quick-info
-  margin-top -8px
-  color #FFF
-  margin-left 3%
-  z-index 4
-  position absolute
-  width 95%
-
-  .movie-meta-details
-    opacity 1
-    margin-left 4px
-    margin-top 20px
-    position relative
-    float left
-    color #fff
-    font-family: 'Open Sans Bold'
-    -webkit-font-smoothing: antialiased
-    font-size 11px
-    cursor default
-    z-index 2
-    -webkit-backface-visibility hidden
-
-  .movie-dot
-    margin-left 15px
-    margin-right 15px
-    margin-top 25px
-    position relative
-    float left
-    width 3px
-    height 3px
-    -moz-border-radius 2px
-    -webkit-border-radius 2px
-    border-radius 2px
-    -moz-background-clip padding
-    -webkit-background-clip padding-box
-    background-clip padding-box
-    background-color #dbdbdd
-    cursor default
-    z-index 2
-    opacity 1
-    -webkit-backface-visibility hidden
-
-.movie-cover-image
-  position absolute
-  width 15%
-  -webkit-border-radius 4px
-  border-radius 4px
-  top 20px
-  margin-left 7.1%
-  z-index 4
-  opacity 1
-  -webkit-backface-visibility hidden
-  display none
-
-.movie-overview-container
-  top: 22%
-  z-index: 2
-  width: 92%
 
 .movie-meta-overview
   position absolute
-  margin-left 3%
-  margin-top 45px
+  margin-left 2%
+  margin-right 2%
+  margin-top 10px
   color #fff
   font-family 'Open Sans Semibold'
-  -webkit-font-smoothing: antialiased
+  -webkit-font-smoothing antialiased
   font-size 14px
   line-height 22px
-  //width 60%
-  //max-width 60%
-  //height 55%
-  z-index 2
   opacity 1
   height 40%
   -webkit-backface-visibility hidden
   overflow auto
-  scrollable()
-
-.movie-detail-close
-	top 15px
-	right 15px
-	position absolute
-	float right
-	width 20px
-	height 20px
-	background-image url('../images/icons/Close.png')
-	background-size 20px
-	cursor pointer
-	z-index 100
-	opacity 0.7
-	-webkit-backface-visibility hidden
-	transition all .5s
-	&:hover
-      opacity 1 
-      transition all .5s
-
-.movie-meta-title
-    margin-top 38%
-    margin-left 3%
-    color #fff
-    font-family: 'Open Sans Semibold'
-    -webkit-font-smoothing: antialiased;
-    font-size 28px
-    position relative
-    cursor default
-    z-index 3
-    max-width 95%
-    opacity 1
-    -webkit-backface-visibility hidden
-    text-shadow 0 0 5px #000
-    text-overflow ellipsis
-    white-space nowrap
-    overflow hidden
+  overflow-x hidden
+  overflow-y overlay
 
 .health-icon
-    z-index 2
-    margin-right 6%
-    margin-top 18px
-    position relative
-    float right
-    width 12px
-    height 17px
-    opacity 1
-    -webkit-backface-visibility hidden
-    &.Bad
-      background-image url('../images/icons/HealthBad.png')
-    &.Medium
-      background-image url('../images/icons/HealthMedium.png')
-    &.Good
-      background-image url('../images/icons/HealthGood.png')
-    &.Excellent
-      background-image url('../images/icons/HealthExcellent.png')
-.rating-star
-    z-index 2
-    padding-right: 12px
-    position relative
-    display: inline-block
-    width 11px
-    height 11px
-    opacity 1
-    background-repeat no-repeat
-    -webkit-backface-visibility hidden
-    &.null
-      background-image url('../images/icons/StarGray.png')
-    &.half
-      background-image url('../images/icons/StarHalf.png')
-    &.full
-      background-image url('../images/icons/star.png')
-
-.movie-quality-container
   z-index 2
-  width: 80px
-  height: 12px
-
-.movie-controlls-container
-  margin-left: 3%
-  margin-top: 10%
-  z-index: 3
-  width: 90%
-  height: 10px
-  position: relative
-
-.movie-btn-watch
-    z-index 3
-    //left 29%
-    //top 72%
-    margin auto
-    cursor pointer
-    width 60px
-    height 60px
-    -webkit-border-radius 50px
-    border-radius 50px
-    -webkit-background-clip padding-box
-    background-clip padding-box
-    background-color #1F375F
-    padding 3px 0 0 18px
-    transition background-color .5s
-    opacity 0.9
-    &:hover
-      background #225694
-      text-decoration none
-      opacity 1
-
-    &:active
-      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6)
-      background: #2875e5
-      border: solid 1px #2468cc
-
-    .movie-watch-now
-      color #fff
-      font-family "Open Sans Semibold", "Open Sans", sans-serif
-      -webkit-font-smoothing antialiased
-      text-align center
-      padding-top 12px
-      font-size 12px
-
-      .play-button
-        width 0
-        height 0
-        border-top 15px solid transparent
-        border-left 30px solid white
-        border-bottom 15px solid transparent
-
-.movie-btn-watch-trailer
-    z-index 2
-    margin-left 15px
-    //top 300px
-    position relative
-    cursor pointer
-    float left
-    height 35px
-    -moz-border-radius 3px
-    -webkit-border-radius 3px
-    border-radius 3px
-    -moz-background-clip padding
-    -webkit-background-clip padding-box
-    background-clip padding-box
-    background-color #1F375F
-    padding 0 15px
-    transition background-color .5s
-    &:hover
-      background #225694
-      text-decoration none
-
-    &:active
-      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6)
-      background: #2875e5
-      border: solid 1px #2468cc
-
-    .movie-watch-now
-      color #fff
-      font-family "Open Sans Semibold", "Open Sans", sans-serif
-      -webkit-font-smoothing antialiased
-      text-align center
-      padding-top 12px
-      font-size 12px
-
-.movie-backdrop
-    width 100%
-    height 40%
-    position absolute
-    top 0px
-    z-index 3
-    background-repeat no-repeat
-    background-position center
-    background-size cover
-    overflow hidden
-    opacity 1
-    -webkit-backface-visibility hidden
-    display none
-
-.movie-backdrop-overlay
-    width 100%
-    height 100%
-    position absolute
-    top 0px
-    background-color #121314
-    /* layer fill content */
-    z-index: 2
-
-@media screen and (max-width: 700px) and (orientation:landscape)
-    .movie-controlls-container
-      margin-left: 3%
-
-    .movie-detail
-      top 16%
-
-    .movie-btn-watch
-      margin-top -40px
-
-    .sperator-movie
-      height 70px
-      top 22%
-
-    .movie-meta-title
-      margin-top 9%
-      font-size 30px
-
-    .movie-overview-container
-      margin-top 0
-
-@media screen and (min-width: 600px) and (orientation:portrait)
-    /* Styles for Tablet screen */
-    .movie-detail
-      top 8%
-
-    .sperator-movie
-      height 100px
-      top 32.2%
-
-    .movie-meta-title
-      margin-top 41%
-      font-size 40px
-
-    .movie-quick-info
-      margin-top 0
-
-    .movie-meta-details
-      font-size 13px
-
-    .movie-cover-image
-      display block
-      width 25%
-
-    .movie-overview-container
-      margin-top 2%
-
-    .movie-meta-overview
-      margin-top 60px
-      font-size 17px
-
-@media all and (min-width: 700px) and (orientation:landscape)
-    /* Styles for Landscape screen */
-    .movie-detail
-      top 12%
-
-    .movie-meta-title
-      margin-top 8%
-      margin-left 25%
-      font-size 40px
-
-    .sperator-movie
-      height 100px
-      top 27.5%
-
-    .movie-quick-info
-      margin-top -7px
-      margin-left 25%
-      width 75%
-
-    .movie-overview-container
-      margin-top 0
-
-    .movie-meta-overview
-      margin-top 60px
-      font-size 17px
-
-    .movie-cover-image
-      display block
-
-.q720
-  z-index 2
-  font-family "Open Sans Bold", "Open Sans", sans-serif
-  -webkit-font-smoothing antialiased
-  font-size 11px
-  color #fff
-  font-weight normal
-  //margin-left 525px
-  //top 312px
-  position absolute
-
-.q1080
-  font-family "Open Sans Bold", "Open Sans", sans-serif
-  -webkit-font-smoothing antialiased
-  font-size 11px
-  color #fff
-  font-weight normal
-  margin-left 50px
-  //top 312px
-  position absolute
-  z-index 2
-
-.switch
-  background transparent
-  border-radius 32px
-  display block
-  height 12px
-  position absolute
-  margin-left 21px
-  //top 312px
-  width 25px
-  border 2px solid #FFF
-  cursor pointer
-  z-index 2
-  label
-    font-family "Open Sans", sans-serif
-    font-size 11px
-    color #fff
-    font-weight bold
-    transition color 0.2s ease
-    transition color 0.2s ease
-    width 20px
-    cursor pointer
-    &:nth-of-type(1)
-      left -38px
-      position absolute
-      text-align right
-    &:nth-of-type(2)
-      position absolute
-      right -30px
-      text-align left
-  input
-    height 7px
-    left -27px
-    opacity 0
-    position absolute
-    top -4px
-    width 79px
-    z-index 2
-    cursor pointer
-    &:checked
-      z-index 0
-      & ~ label
-        &:nth-of-type(1)
-          color #286dc4
-        &:nth-of-type(2)
-          color #FFF
-      & ~ .toggle
-        left 0px
-    & ~ :checked
-      & ~ label
-        &:nth-of-type(1)
-          color #FFF
-        &:nth-of-type(2)
-          color #286dc4
-      & ~ .toggle
-        left 11px
-
-.toggle
-  transition left 0.2s ease
-  transition left 0.2s ease
-  background #286dc4
-  border-radius 50%
-  height 10px
-  left -0px
-  position absolute
-  top -1px
-  width 10px
-  z-index 1
-
-.sub-dropdown
-    z-index 2
-    right 11%
-    top 10px
-    position absolute
-    float right
-    height 17px
-    opacity 1
-    -webkit-backface-visibility hidden
-    color #fff
-    font-family 'Open Sans Semibold'
-    -webkit-font-smoothing: antialiased
-    font-size 12px
-
-.sub-dropdown-arrow-down
-  width 0
-  height 0
-  border-left 4px solid transparent
-  border-right 4px solid transparent
-  border-top 5px solid #c4c6c8
-  top: 3px
-  position: absolute
-  float left
-  cursor pointer
-  right -12px
-
-.sub-dropdown-arrow-up
-  width 0
-  height 0
-  border-left 4px solid transparent
-  border-right 4px solid transparent
-  border-bottom 5px solid #c4c6c8
-  top: 3px
-  position: absolute
-  float left
-  cursor pointer
-  right -12px
-
-.flag-container
-    z-index 2
-    right: 10.1%
-    top 30px
-    position relative
-    float right
-    max-width: 36%
-    opacity 1
-    -webkit-backface-visibility hidden
-    padding-bottom: 6px
-    padding-right: 6px
-    display none
-
-.flag
-  z-index 2
-  margin 4px
-  background-size 22px 16px
+  margin-right 6%
   position relative
   float right
-  cursor pointer
-  background-image url('../images/flags/none.png')
-  width 22px
-  height 16px
-  &.NA
-    background-image url('../images/flags/none.png')
-  &.toggle
-    top: -7px
-    border-radius: 0
-    background-color: transparent
-  &.bn
-    background-image url('../images/flags/bengali.png')
-  &.bs
-    background-image url('../images/flags/bosnian.png')
-  &.pt-br
-    background-image url('../images/flags/brazilian.png')
-  &.bg
-    background-image url('../images/flags/bulgarian.png')
-  &.hr
-    background-image url('../images/flags/croatian.png')
-  &.cs
-    background-image url('../images/flags/czech.png')
-  &.da
-    background-image url('../images/flags/danish.png')
-  &.nl
-    background-image url('../images/flags/dutch.png')
-  &.en
-    background-image url('../images/flags/english.png')
-  &.et
-    background-image url('../images/flags/estonian.png')
-  &.eu
-    background-image url('../images/flags/basque.png')
-  &.fa
-    background-image url('../images/flags/farsi.png')
-  &.fi
-    background-image url('../images/flags/finnish.png')
-  &.fr
-    background-image url('../images/flags/french.png')
-  &.de
-    background-image url('../images/flags/german.png')
-  &.he
-    background-image url('../images/flags/hebrew.png')
-  &.hy
-    background-image url('../images/flags/hungarian.png')
-  &.it
-    background-image url('../images/flags/italian.png')
-  &.lv
-    background-image url('../images/flags/latvian.png')
-  &.lt
-    background-image url('../images/flags/lithuanian.png')
-  &.mt
-    background-image url('../images/flags/maltese.png')
-  &.ar
-    background-image url('../images/flags/arabic.png')
-  &.pl
-    background-image url('../images/flags/polish.png')
-  &.pt
-    background-image url('../images/flags/portuguese.png')
-  &.ro
-    background-image url('../images/flags/romanian.png')
-  &.ru
-    background-image url('../images/flags/russian.png')
-  &.sr
-    background-image url('../images/flags/serbian.png')
-  &.sk
-    background-image url('../images/flags/slovak.png')
-  &.sl
-    background-image url('../images/flags/slovenian.png')
-  &.es
-    background-image url('../images/flags/spanish.png')
-  &.th
-    background-image url('../images/flags/thai.png')
-  &.tr
-    background-image url('../images/flags/turkish.png')
-  &.uk
-    background-image url('../images/flags/ukrainian.png')
-  &.el
-    background-image url('../images/flags/greek.png')
-  &.hu
-    background-image url('../images/flags/hungarian.png')
-  &.zh
-    background-image url('../images/flags/chinese.png')
+  width 14px
+  height 19px
+  opacity 1
+  -webkit-backface-visibility hidden
+  &.Bad
+    background-image url('../images/icons/HealthBad.png')
+  &.Medium
+    background-image url('../images/icons/HealthMedium.png')
+  &.Good
+    background-image url('../images/icons/HealthGood.png')
+  &.Excellent
+    background-image url('../images/icons/HealthExcellent.png')
+
+
+.rating-star
+  z-index 2
+  float right
+  margin-right 5px
+  position relative
+  width 11px
+  height 11px
+  opacity 1
+  background-repeat no-repeat
+  -webkit-backface-visibility hidden
+  &.null
+    background-image url('../images/icons/StarGray.png')
+  &.half
+    background-image url('../images/icons/StarHalf.png')
+  &.full
+    background-image url('../images/icons/star.png')
