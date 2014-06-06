@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'), local('Roboto-Regular'), url(../fonts/Roboto-Regular.html);
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Roboto Medium'), local('Roboto-Medium'), url(../fonts/Roboto-Medium.ttf);
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'), local('Roboto-Bold'), url(../fonts/Roboto-Bold.ttf);
+}
+body {
+    color: #ffffff;
+}
+.bar {
+    position: relative;
+    background-color: #141518;
+    border-bottom: #141518;
+    box-shadow: 0px -2px 0px #101010 inset, 0px 3px 3px rgba(0, 0, 0, 0.07)
+}
+.bar h1 {
+    color: #ffffff;
+
+}
+.popcorn-title
+{
+    left: 64px;
+position: absolute;
+    float: left;
+display: block;
+width: 100%;
+padding: 0;
+font-size: 17px;
+font-weight: 500;
+line-height: 52px;
+color: #000;
+white-space: nowrap;
+}    
+  
+}
+header .icon {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header-logo
+{
+    position: relative;
+    height: 100%;
+    left: -17px;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.movie-list {
+    position: relative;
+    height: 100%;
+    padding-top: 6px;
+    width: 100%;
+    background-color: #17171b;
+}
+.movie-item {
+    display: inline-block;
+    margin: 5px;
+    float: left;
+    font-size: 0.8em;
+    border-radius: 5px;
+    background-clip: padding-box;
+    background-color: #23252b;
+}
+.movie-item-cover {
+    background-image: url("../images/posterholder.png");
+    background-size: 150px 210px;
+    width: 150px;
+    height: 210px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 11px rgba(0, 0, 0, .2), inset 0 3px 0 rgba(255, 255, 255, .12);
+    transition: opacity 0.5s ease;
+}
+.movie-item-meta-title {
+    height: 22px;
+    margin-top: 2px;
+    margin-left: 10px;
+    margin-bottom: 1px;
+    color: #fff;
+    max-width: 134px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.movie-item-meta-year {
+    opacity: 0.3;
+    height: 22px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    max-width: 134px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
