@@ -4,10 +4,8 @@
 
 Popcorn Time + Mobile = <3
 
-[](http://i.imgur.com/515q1pH)
-[](http://i.imgur.com/KibHe3H)
-[](http://i.imgur.com/7S61W36.png)
-[](http://i.imgur.com/w95nHWm.png)
+![](http://i.imgur.com/7S61W36.png)
+![](http://i.imgur.com/w95nHWm.png)
 
 ### APIs
 
