@@ -60,23 +60,28 @@
 
 
 
-            document.addEventListener("deviceready", onDeviceReady, false);
+            document.addEventListener("deviceready", onDeviceReadymain, false);
 
-            function onDeviceReady(){
+            function onDeviceReadymain(){
             document.addEventListener("backbutton", function(e){
 
-            if( that.$(".sub-menu").css( "right" ) == '0px' )
+            if( that.$(".sub-menu").css( "right" ) == '0px' ) // submenu is open
             {
                 that.$(".sub-menu").animate({right: "-60%"}, 500);
                  return;
             }
-            if( that.$(".menu").css( "right" ) == '0px' )
+            if( that.$(".menu").css( "right" ) == '0px' ) //main menu is open
             {
                 that.$(".menu").animate({right: "-70%"}, 500);
                 return;
             }
-
-            navigator.app.exitApp();
+            if( $('.app-overlay').length )         // movie detail is open
+            {
+                App.vent.trigger('movie:closeDetail');
+                $(".movie-list-header").show();
+                return;
+            }
+            navigator.app.exitApp(); 
 
 
             }, false);
@@ -95,6 +100,8 @@
             this.ui.search.val('');
             this.ui.search.blur();
         },
+
+
 
         sortBy: function(e) {
             this.$('.sorters .active').removeClass('active');

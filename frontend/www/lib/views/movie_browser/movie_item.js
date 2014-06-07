@@ -27,6 +27,7 @@
 
 
         showDetail: function(e) {
+
             e.preventDefault();
 
             this.model.set('imdb_id', 'tt'+this.model.get('imdb'));

@@ -70,17 +70,7 @@
 
             });
 
-            document.addEventListener("deviceready", onDeviceReady, false);
-
-            function onDeviceReady(){
-            document.addEventListener("backbutton", function(e){
-            
-            App.vent.trigger('movie:closeDetail');
-            $(".movie-list-header").show();
-
-
-            }, false);
-            }
+           
 
 
 
