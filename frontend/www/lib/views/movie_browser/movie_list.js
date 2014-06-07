@@ -49,7 +49,12 @@
             if(this.collection.state === 'loading') {
                 this.onLoading();
             }
+            $(".movies").css("margin-top", $( "#movie-list-header" ).height() +"px");
 
+            $(window).on("orientationchange",function(){
+            $(".movies").css("margin-top", $( "#movie-list-header" ).height() +"px");
+
+            });
         },
 
         onLoading: function() {
@@ -64,14 +69,11 @@
             var self = this;
             this.checkEmpty();
             this.ui.spinner.hide();
-            $(window).on('orientationchange', this.onThisResize);
-            this.onThisResize();
+
+
 
         },
-        onThisResize: function() {
-            var headerheight = $( "#movie-list-header" ).height();
-            $(".movies").css("margin-top", headerheight +"px");
-          },
+
         onScroll: function() {
             if(!this.collection.hasMore) {
                 return;

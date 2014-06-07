@@ -1,8 +1,8 @@
 <header id="movie-list-header" class="bar bar-nav">
     <a class="icon icon-more-vertical pull-right filter-bar-menu" href="#"></a>
     <a class="icon icon-search pull-right" href="#"></a>
-
-    <h1 class="title">Popcorn Time</h1>
+<img class="header-logo" src="images/logo.png"/>
+    <h1 class="popcorn-title">Popcorn Time</h1>
 
 
 </header>
