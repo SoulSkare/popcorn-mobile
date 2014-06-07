@@ -1,4 +1,4 @@
-    <!-- TODO: need something more sexy -->
+    <!-- TODO: need something more sexy 
     <div class="view_movie" style="display:block;height:69px">
 		<p class="title" title="<%= title %>"><%= title %></p>
 		<p class="year"><%= year %></p>
@@ -10,4 +10,11 @@
 
 		   <img src="images/icons/blue-arrow.png" class="popcorn-movie-open-icon"/>
             <div class="popcorn-movie-seperator"></div>
-    </div>
+    </div>-->
+
+
+        <div class="movie-item">
+            <div class="movie-item-cover" style="background-image: url(http://zapp.trakt.us/images/posters_movies/187975-300.jpg?2); opacity: 1;"></div>
+            <div class="movie-item-meta-title"><%= title %></div>
+            <div class="movie-item-meta-year"><%= year %></div>
+        </div>

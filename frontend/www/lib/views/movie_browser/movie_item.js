@@ -8,22 +8,23 @@
         className: 'movie-item',
 
         ui: {
-            coverImage: '.cover-image',
-            cover: '.cover',
+            cover: '.movie-item-cover',
             bookmarkIcon: '.actions-favorites'
         },
 
         events: {
-            'click .view_movie': 'showDetail'
+            'click .movie-item': 'showDetail'
         },
 
-        onShow: function() {},
+        onShow: function() {
+            this.ui.cover.css('background-image', 'url(' + this.model.get('image') + ')');
+
+        },
 
         onClose: function() {
-            this.ui.coverImage.off('load');
+
         },
 
-        showCover: function() {},
 
         showDetail: function(e) {
             e.preventDefault();
