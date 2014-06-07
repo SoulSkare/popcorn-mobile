@@ -63,15 +63,12 @@
                 App.vent.trigger('movie:closeDetail');
             });
 
-            $(window).on('orientationchange', this.onThisResize);
-            this.onThisResize();
-
-        },
-
-        onThisResize: function() {
- 
 
             $(".movie-detail-view").css("margin-top", $('.bar-nav').height()+"px");
+            $(window).on("orientationchange",function(){
+            $(".movie-detail-view").css("margin-top", $('.bar-nav').height()+"px");
+
+            });
         },
 
         onClose: function() {
