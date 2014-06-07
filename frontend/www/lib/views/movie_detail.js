@@ -69,6 +69,22 @@
             $(".movie-detail-view").css("margin-top", $('.bar-nav').height()+"px");
 
             });
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            function onDeviceReady(){
+            document.addEventListener("backbutton", function(e){
+            
+            App.vent.trigger('movie:closeDetail');
+            $(".movie-list-header").show();
+
+
+            }, false);
+            }
+
+
+
+
         },
 
         onClose: function() {

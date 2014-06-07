@@ -58,6 +58,31 @@
                 $(this).addClass("selected")
             })
 
+
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            function onDeviceReady(){
+            document.addEventListener("backbutton", function(e){
+
+            if( that.$(".sub-menu").css( "right" ) == '0px' )
+            {
+                that.$(".sub-menu").animate({right: "-60%"}, 500);
+                 return;
+            }
+            if( that.$(".menu").css( "right" ) == '0px' )
+            {
+                that.$(".menu").animate({right: "-70%"}, 500);
+                return;
+            }
+
+            navigator.app.exitApp();
+
+
+            }, false);
+            }
+
+
         },
 
         search: function(e) {
