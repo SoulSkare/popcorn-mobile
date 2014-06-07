@@ -63,7 +63,7 @@
                 App.vent.trigger('movie:closeDetail');
             });
 
-            $(window).on('resize', this.onThisResize);
+            $(window).on('orientationchange', this.onThisResize);
             this.onThisResize();
 
         },
