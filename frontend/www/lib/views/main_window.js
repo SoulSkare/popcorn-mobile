@@ -50,6 +50,53 @@
                 that.showMovies();
                 App.vent.trigger('main:ready'); 
             });
+
+
+
+
+
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            function onDeviceReady(){
+
+            console.log('Device ready');
+
+            document.addEventListener("backbutton", function(e){
+
+            if( $(".sub-menu").css( "right" ) == '0px' ) // submenu is open
+            {
+                $(".sub-menu").animate({right: "-60%"}, 500);
+                 return;
+            }
+            if( $(".menu").css( "right" ) == '0px' ) //main menu is open
+            {
+                $(".menu").animate({right: "-70%"}, 500);
+                $(".menu-overlay").css('display', 'none');
+                return;
+            }
+
+
+            if ( $( ".movie-detail-view" ).length ) {
+ 
+            App.vent.trigger('movie:closeDetail');
+
+            $(".movie-list-header").show();
+            return;
+            }
+
+            navigator.app.exitApp(); 
+
+
+            }, false);
+            }
+
+
+
+
+
+
+
         },
 
 
