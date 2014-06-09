@@ -2,8 +2,8 @@
     <a class="icon icon-bars pull-right filter-bar-menu" href="#"></a>
 
 	<button id="close-movie-detail" class="btn btn-link btn-nav pull-left">
-    <span class="icon icon-left-nav"></span>
-    Back
+		<span class="icon icon-left-nav"></span>
+		Back
 	</button>
 </header>
 

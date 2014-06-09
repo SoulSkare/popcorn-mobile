@@ -8,11 +8,13 @@
             search:     '.search input'
         },
         events: {
-            'hover  @ui.search': 'focus',
-            'submit @ui.searchForm': 'search',
+            'hover  @ui.search-input': 'focus',
+            'submit @ui.search-check': 'search',
             'click .sorters .dropdown-menu a': 'sortBy',
             'click .menu-genre a': 'changeGenre',
             'click .showMovies': 'showMovies',
+            'click .icon-search': 'showSearch',
+            'click .close-search-menu': 'hideSearch'
         },
 
         focus: function (e) {
@@ -74,7 +76,21 @@
             this.ui.search.blur();
         },
 
+        showSearch: function(e) {
+            e.preventDefault();
+            console.log('Show search');
+            var that = this;
+            // SEARCH SHOW
+            that.$(".search-base").animate({right: 0}, 500);
+        },
 
+        hideSearch: function(e) {
+            e.preventDefault();
+            console.log('Hide search');
+            var that = this;
+            // SEARCH HIDE
+            $(".search-base").animate({right: '-100%'}, 500);
+        },
 
         sortBy: function(e) {
             this.$('.sorters .active').removeClass('active');
@@ -87,6 +103,8 @@
             } else {
                 this.model.set('order', -1);
             }
+
+            $(".genre-sort-by-choosed").text(sorter);
 
             this.model.set({
                 keyword: '',
@@ -103,6 +121,7 @@
             this.$(e.target).parent().addClass("selected");
 
             var genre = this.$(e.target).attr('data-value');
+            $(".genre-choosed").text(genre);
 
             this.model.set({
                 keyword: '',

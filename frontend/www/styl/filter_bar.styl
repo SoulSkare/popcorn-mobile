@@ -5,9 +5,9 @@
    
 
 .movie-list-header
-    height: 7%
-    position: absolute
-    width: 100%
+    height 7%
+    position absolute
+    width 100%
 
 
 .popcorn-logo
@@ -15,20 +15,20 @@
     float left
     width 186px
     height 42px
-    max-width: 300px;
-    margin-top: 8%
-    margin-left: 4%;
+    max-width 300px
+    margin-top 8%
+    margin-left 4%
     background-image url("../images/LOGO.png")
-    background-repeat: no-repeat
+    background-repeat no-repeat
 
 
 .popcorn-menu-icon
     position relative
     width 17%
     float right
-    width: 8%
-    margin-right: 2%
-    margin-top: 2%
+    width 8%
+    margin-right 2%
+    margin-top 2%
     cursor pointer
 
 
@@ -43,6 +43,47 @@
     background-image url("../images/SEARCHICON.png")
     background-size 60%
     background-position 50% 40%
+
+.search-base
+    z-index 25
+    position absolute
+    background #17181B
+    width 100%
+    right -100%
+    
+    #close-search-menu
+        width 20px
+        height 100%
+        margin-left 3px
+
+        .close-search-menu
+            position absolute
+            margin-top 10px
+            margin-left -10px
+    #search-check
+        position absolute
+        right 10px
+            
+    .search-input
+        /* You can set width to whatever you like */
+        width 89%
+        color white
+        font-family "Roboto", "Droid Sans", sans-serif
+        font-size 16px
+        margin 0
+        margin-left 25px
+        padding 8px 26px 6px 8px
+        position relative
+        display block
+        outline none
+        border none
+        background bottom left linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right linear-gradient(#a9a9a9, #a9a9a9) no-repeat
+        background-size 1px 6px, 1px 1px, 1px 6px
+
+    .search-input:hover, .search-input:focus
+        background bottom left linear-gradient(#0099cc, #0099cc) no-repeat, bottom center linear-gradient(#0099cc, #0099cc) repeat-x, bottom right linear-gradient(#0099cc, #0099cc) no-repeat
+        background-size 1px 6px, 1px 1px, 1px 6px
+
 
 @media all and (min-width: 700px)
     /* Styles for Tablet screen */
