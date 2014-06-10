@@ -13,7 +13,7 @@
         },
 
         events: {
-            'click .movie-item': 'showDetail'
+            'click .movie-item-cover': 'showDetail'
         },
 
         onShow: function() {

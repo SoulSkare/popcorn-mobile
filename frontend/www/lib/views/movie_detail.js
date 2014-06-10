@@ -64,9 +64,9 @@
             });
 
 
-            $(".movie-detail-view").css("margin-top", $('.bar-nav').height()+"px");
+            $(".movie-detail-view").css("padding-top", $('.bar-nav').height()+"px");
             $(window).on("orientationchange",function(){
-            $(".movie-detail-view").css("margin-top", $('.bar-nav').height()+"px");
+            $(".movie-detail-view").css("padding-top", $('.bar-nav').height()+"px");
 
             });
 

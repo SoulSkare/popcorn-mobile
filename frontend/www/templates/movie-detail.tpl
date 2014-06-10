@@ -1,8 +1,8 @@
 <header class="bar bar-nav">
-    <a class="icon icon-bars pull-right filter-bar-menu" href="#"></a>
+    <a  style="color: #878687;" class="icon icon-bars pull-right filter-bar-menu" href="#"></a>
 
 	<button id="close-movie-detail" class="btn btn-link btn-nav pull-left">
-		<span class="icon icon-left-nav"></span>
+		<span style="color: #878687;" class="icon icon-left-nav"></span>
 		Back
 	</button>
 </header>
