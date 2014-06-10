@@ -27,31 +27,31 @@
 
             // MENU
             that.$(".filter-bar-menu").on("click tap", function(e){
-                that.$(".menu").animate({right: 0}, 500)
+                that.$(".menu").animate({right: 0}, 300)
                 that.$(".menu-overlay").css('display', 'block')
             })
 
             that.$(".menu-overlay").on("click tap", function(e){
-                that.$(".sub-menu").animate({right: "-60%"}, 500)
-                that.$(".menu").animate({right: "-70%"}, 500)
+                that.$(".sub-menu").animate({right: "-50%"}, 300)
+                that.$(".menu").animate({right: "-60%"}, 300)
                 that.$(".menu-overlay").css('display', 'none')
             })
 
             that.$(".genre-sub-menu").on("click tap", function(e){
                 that.$(".menu-sort-by").hide()
-                that.$(".sub-menu").animate({right: 0}, 500)
+                that.$(".sub-menu").animate({right: 0}, 300)
                 that.$(".menu-genre ").show()
             })
 
             that.$(".genre-sort-by").on("click tap", function(e){
                 that.$(".menu-genre ").hide()
-                that.$(".sub-menu").animate({right: 0}, 500)
+                that.$(".sub-menu").animate({right: 0}, 300)
                 that.$(".menu-sort-by").show()
             })
 
             that.$(".menu").on("click tap", function(e){
                 if (that.$(".sub-menu").css("right") == "0px") {
-                    that.$(".sub-menu").animate({right: "-60%"}, 500)
+                    that.$(".sub-menu").animate({right: "-50%"}, 300)
                 }
             })
 

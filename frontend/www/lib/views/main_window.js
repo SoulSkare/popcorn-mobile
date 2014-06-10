@@ -65,7 +65,7 @@
             document.addEventListener("backbutton", function(e){
 
 
-            if( $(".search-base").css( "right" ) == '0px' ) // submenu is open
+            if( $(".search-base").css( "right" ) == '0px' ) // search is open
             {
                 $(".search-base").animate({right: '-100%'}, 500);
                  return;
