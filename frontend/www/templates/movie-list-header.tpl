@@ -10,7 +10,7 @@
             <span style="color: #878687;" class="icon icon-check search-check"></span>
         </button>
     </div>
-    <a class="icon icon-more-vertical pull-right filter-bar-menu" style="color: #3b3940;" href="#"></a>
+    <a class="icon icon-bars pull-right filter-bar-menu" style="color: #3b3940;" href="#"></a>
     <a style="color: #878687;" class="icon icon-search pull-right" href="#"></a>
 </header>
 

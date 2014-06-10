@@ -33,15 +33,17 @@
                 <div class="movie-meta-dot"></div>
  <% var p_rating = Math.round(rating) / 2; %>
 			<div data-toggle="tooltip" data-placement="right" title="<%= rating %>/10" class="star-container">
+							<% for (var i = Math.ceil(p_rating); i < 5; i++) { %>
+					<div class="rating-star null"></div>
+				<% }; %>
+								<% if (p_rating % 1 > 0) { %>
+					<div class="rating-star half"></div>
+				<% }; %>
 				<% for (var i = 1; i <= Math.floor(p_rating); i++) { %>
 					<div class="rating-star full"></div>
 				<% }; %>
-				<% if (p_rating % 1 > 0) { %>
-					<div class="rating-star half"></div>
-				<% }; %>
-				<% for (var i = Math.ceil(p_rating); i < 5; i++) { %>
-					<div class="rating-star null"></div>
-				<% }; %>
+
+
 			</div>
 
 
