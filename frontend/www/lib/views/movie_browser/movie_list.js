@@ -49,10 +49,10 @@
             if(this.collection.state === 'loading') {
                 this.onLoading();
             }
-            $(".movies").css("margin-top", $( "#movie-list-header" ).height() +"px");
+            $(".movies").css("padding-top", $( "#movie-list-header" ).height() +"px");
 
             $(window).on("orientationchange",function(){
-            $(".movies").css("margin-top", $( "#movie-list-header" ).height() +"px");
+            $(".movies").css("padding-top", $( "#movie-list-header" ).height() +"px");
 
             });
         },

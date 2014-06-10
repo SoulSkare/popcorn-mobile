@@ -3,15 +3,15 @@
     <h1 class="popcorn-title">Popcorn Time</h1>
     <div class="search-base">
         <button id="close-search-menu" class="btn btn-link btn-nav pull-left close-search-menu">
-            <span class="icon icon-right-nav close-search-menu"></span>
+            <span style="color: #878687;" class="icon icon-right-nav close-search-menu"></span>
         </button>
         <input type="text" class="search-input" id="search_menu" name="search_menu" placeholder="Search">
         <button id="search-check" class="btn btn-link btn-nav pull-left search-check">
-            <span class="icon icon-check search-check"></span>
+            <span style="color: #878687;" class="icon icon-check search-check"></span>
         </button>
     </div>
-    <a class="icon icon-more-vertical pull-right filter-bar-menu" href="#"></a>
-    <a class="icon icon-search pull-right" href="#"></a>
+    <a class="icon icon-more-vertical pull-right filter-bar-menu" style="color: #3b3940;" href="#"></a>
+    <a style="color: #878687;" class="icon icon-search pull-right" href="#"></a>
 </header>
 
 <div class="menu-overlay"></div>
