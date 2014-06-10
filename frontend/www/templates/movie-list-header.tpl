@@ -1,5 +1,5 @@
 <header id="movie-list-header" class="bar bar-nav">
-    <img class="header-logo" src="images/logo.png"/>
+    <img class="header-logo" src="images/logo_header.png"/>
     <h1 class="popcorn-title">Popcorn Time</h1>
     <div class="search-base">
         <button id="close-search-menu" class="btn btn-link btn-nav pull-left close-search-menu">
