@@ -4,22 +4,61 @@
     App.View.FilterBar = Backbone.Marionette.ItemView.extend({
         className: 'filter-bar',
         ui: {
-            searchForm: '.search form',
-            search:     '.search input'
+            search:     '#search_menu',
+            btnSearch:  '#search-check'
         },
         events: {
-            'hover  @ui.search-input': 'focus',
-            'submit @ui.search-check': 'search',
-            'click .sorters .dropdown-menu a': 'sortBy',
+            'keyup @ui.search': 'keyCheck',
+            'click .search-check-confirm': 'search',
+            'click .search-check-cancel': 'CleanSearch',
+            'click .menu-sort-by a': 'sortBy',
             'click .menu-genre a': 'changeGenre',
             'click .showMovies': 'showMovies',
             'click .icon-search': 'showSearch',
             'click .close-search-menu': 'hideSearch'
         },
 
-        focus: function (e) {
-            console.error ('here');
-            e.focus();
+        keyCheck: function (e) {
+            if ( e.which === 13 ) { 
+                var keywords = $(e.target).val();
+                console.info(keywords);
+                if(keywords === '') return;
+                App.vent.trigger('movie:closeDetail');
+                e.preventDefault();
+                this.model.set({
+                    keywords: this.ui.search.val(),
+                    genre: ''
+                });
+                this.ui.search.blur();
+                this.ui.btnSearch.removeClass('search-check-confirm').addClass('search-check-cancel');
+                $("#search-check-icon").removeClass('icon-check').addClass('icon-close');
+            }
+        },
+
+        search: function(e) {
+            var keywords = $(e.target).val();
+            if(keywords === '') return;
+            App.vent.trigger('movie:closeDetail');
+            e.preventDefault();
+            this.model.set({
+                keywords: this.ui.search.val(),
+                genre: ''
+            });
+            this.ui.btnSearch.removeClass('search-check-confirm').addClass('search-check-cancel');
+            $("#search-check-icon").removeClass('icon-check').addClass('icon-close');
+        },
+
+        CleanSearch: function(e) {
+            App.vent.trigger('movie:closeDetail');
+            e.preventDefault();
+            this.model.set({
+                keywords: '',
+                genre: ''
+            });
+            this.ui.search.val('');
+            this.ui.btnSearch.addClass('search-check-confirm').removeClass('search-check-cancel');
+            $("#search-check-icon").addClass('icon-check').removeClass('icon-close');
+            $(".search-base").animate({right: '-100%'}, 300);
         },
 
         onShow: function() {
@@ -32,8 +71,8 @@
             })
 
             that.$(".menu-overlay").on("click tap", function(e){
-                that.$(".sub-menu").animate({right: "-50%"}, 300)
-                that.$(".menu").animate({right: "-60%"}, 300)
+                that.$(".sub-menu").animate({right: "-60%"}, 300)
+                that.$(".menu").animate({right: "-70%"}, 300)
                 that.$(".menu-overlay").css('display', 'none')
             })
 
@@ -51,7 +90,7 @@
 
             that.$(".menu").on("click tap", function(e){
                 if (that.$(".sub-menu").css("right") == "0px") {
-                    that.$(".sub-menu").animate({right: "-50%"}, 300)
+                    that.$(".sub-menu").animate({right: "-60%"}, 300)
                 }
             })
 
@@ -60,41 +99,34 @@
                 $(this).addClass("selected")
             })
 
-
-
-
-        },
-
-        search: function(e) {
-            App.vent.trigger('movie:closeDetail');
-            e.preventDefault();
-            this.model.set({
-                keywords: this.ui.search.val(),
-                genre: ''
-            });
-            this.ui.search.val('');
-            this.ui.search.blur();
         },
 
         showSearch: function(e) {
             e.preventDefault();
-            console.log('Show search');
-            var that = this;
             // SEARCH SHOW
-            that.$(".search-base").animate({right: 0}, 500);
+            $(".search-base").animate({right: 0}, 300);
+            e.focus();
         },
 
         hideSearch: function(e) {
             e.preventDefault();
-            console.log('Hide search');
-            var that = this;
             // SEARCH HIDE
-            $(".search-base").animate({right: '-100%'}, 500);
+            App.vent.trigger('movie:closeDetail');
+            e.preventDefault();
+            this.model.set({
+                keywords: '',
+                genre: ''
+            });
+            this.ui.search.val('');
+            this.ui.btnSearch.addClass('search-check-confirm').removeClass('search-check-cancel');
+            $("#search-check-icon").addClass('icon-check').removeClass('icon-close');
+            $(".search-base").animate({right: '-100%'}, 300);
         },
 
         sortBy: function(e) {
-            this.$('.sorters .active').removeClass('active');
-            $(e.target).addClass('active');
+            this.$('.menu-overlay').click(); // close menu
+            this.$('.menu-sort-by li').removeClass('selected');
+            this.$(e.target).parent().addClass("selected");
 
             var sorter = $(e.target).attr('data-value');
 
@@ -105,7 +137,6 @@
             }
 
             $(".genre-sort-by-choosed").text(sorter);
-
             this.model.set({
                 keyword: '',
                 sorter: sorter

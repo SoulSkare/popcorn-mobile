@@ -6,8 +6,8 @@
             <span style="color: #878687;" class="icon icon-right-nav close-search-menu"></span>
         </button>
         <input type="text" class="search-input" id="search_menu" name="search_menu" placeholder="Search">
-        <button id="search-check" class="btn btn-link btn-nav pull-left search-check">
-            <span style="color: #878687;" class="icon icon-check search-check"></span>
+        <button id="search-check" class="btn btn-link btn-nav pull-left search-check-confirm">
+            <span id="search-check-icon" style="color: #878687;" class="icon icon-check"></span>
         </button>
     </div>
     <a class="icon icon-bars pull-right filter-bar-menu" style="color: #3b3940;" href="#"></a>
@@ -19,9 +19,9 @@
     <ul class="menu-base">
         <li class="selected showMovies">Movies</li>
         <li class="genre-sub-menu">Genre</li>
-        <li class="genre-choosed">All</li>
+        <span class="genre-choosed">All</span>
         <li class="genre-sort-by">Sort By</li>
-        <li class="genre-sort-by-choosed">Popularity</li>
+        <span class="genre-sort-by-choosed">Popularity</span>
     </ul>
     <div class="sub-menu">
         <div><span class="icon icon-left-nav"></span> back</div>

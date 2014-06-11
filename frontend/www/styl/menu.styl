@@ -44,19 +44,24 @@
 	color #fff
 	text-decoration none
 
-.menu .menu-base > li 
+.menu .menu-base > li, .menu .menu-base > span
 	border-left 5px solid rgba(0, 0, 0, 0)
 	padding 15px 10px
 	transition all 0.3s
 	margin-left 2%
 	border-bottom 1px solid #474747
+	display block
+	width 100%
 
 .menu .menu-base > li:hover 
-	border-left 5px solid rgba(55, 73, 207, 0.3)
+	border-left 5px solid rgba(255, 255, 255, 0.4)
 
 .menu .menu-base>li.selected 
-	border-left 5px solid #3749CF
+	border-left 5px solid #2d75df
 	transition all 0.3s
+
+.menu .menu-base > span:hover
+	border-left none
 
 .sub-menu 
 	z-index 11
@@ -68,6 +73,7 @@
 	overflow auto
 	top 0
 	box-shadow 6px 0px 14px 6px #000
+	scrollable()
 
 	div 
 		padding 10px
@@ -84,7 +90,7 @@
 		width 100%
 
 .menu-genre 
-	padding 10px 30px
+	padding 10px 5px 10px 20px
 	border-left 5px solid rgba(0, 0, 0, 0)
 	transition all 0.3s
 	list-style none
@@ -94,13 +100,17 @@
 	display none
 	font-weight 400
 	margin 45px 0 10px 0
-	scrollable()
 
 	li 
-		padding 7px
 		border-left 5px solid rgba(0, 0, 0, 0)
 		transition all 0.3s
 		width 100%
+		display block
+
+		a
+			width 100%
+			display block
+			padding 7px
 
 	li:hover 
 		background rgba(0, 0, 0, 0.27)
@@ -109,10 +119,11 @@
 
 	li.selected
 		border-left 5px solid #7C7C7C !important
+		background #1D1D1D
 		transition all 0.3s
 
-.menu-sort-by 
-	padding 10px 30px
+.menu-sort-by
+	padding 10px 5px 10px 20px
 	border-left 5px solid rgba(0, 0, 0, 0)
 	transition all 0.3s
 	list-style none
@@ -122,13 +133,17 @@
 	font-size 24px
 	font-weight 400
 	margin 45px 0 10px 0
-	scrollable()
 
 	li 
-		padding 7px
 		border-left 5px solid rgba(0, 0, 0, 0)
 		transition all 0.3s
 		width 100%
+		display block
+
+		a
+			width 100%
+			display block
+			padding 7px
 
 	li:hover 
 		background rgba(0, 0, 0, 0.27)
@@ -137,4 +152,5 @@
 
 	li.selected
 		border-left 5px solid #7C7C7C !important
+		background #1D1D1D
 		transition all 0.3s
