@@ -83,6 +83,16 @@
             }
 
 
+
+            if ( $( ".loading" ).length ) {   //we are loading a movie/tv show
+ 
+            App.vent.trigger('stream:stop');
+            App.vent.trigger('player:close');
+
+
+            return;
+            }
+
             if ( $( ".movie-detail-view" ).length ) {
  
             App.vent.trigger('movie:closeDetail');
